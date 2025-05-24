@@ -4,7 +4,7 @@
 const int GOOMBA_MAX = 2;
 	class Goomba :public __Enenys::_Enemys {
 
-	public:
+	public://e
 		int image[2];
 		int goomba_flashing_flame;
 		int image_index;

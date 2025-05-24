@@ -15,7 +15,7 @@ Goomba goombs;
 void GameInit()
 {
 	map.Init();
-	goombs.GoombaInit();
+	goombs.GoombaInit();//クリボー初期化
 }
 //---------------------------------------------------------------------------------
 //	更新処理

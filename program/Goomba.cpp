@@ -42,7 +42,7 @@ void Goomba::GoombaUpdate()
 			}
 		}
 	}
-	//クリボーの移動処理
+	//クリボーの移動処理//e
 	//for (int i = 0; i < GOOMBA_MAX; ++i) {
 	//	_Goomba[i].pos.x -= 0.5f;
 	//}
