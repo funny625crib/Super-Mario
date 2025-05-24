@@ -1,13 +1,14 @@
 #pragma once
 #include "Float2.h"
 #include "Enemys.h"
-namespace __Goomba {
-	class _Goomba :public __Enenys::_Enemys {
+const int GOOMBA_MAX = 2;
+	class Goomba :public __Enenys::_Enemys {
 
 	public:
-		int image;
-
-
+		int image[2];
+		int goomba_flashing_flame;
+		int image_index;
+		float move = 0.5f;
 
 		void GoombaInit();
 		void GoombaUpdate();
@@ -20,4 +21,3 @@ namespace __Goomba {
 
 
 	};
-}
