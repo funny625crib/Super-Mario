@@ -1,7 +1,7 @@
 #pragma once
 
-#define SCREEN_W	450
-#define SCREEN_H	800
+#define SCREEN_W	800
+#define SCREEN_H	470
 
 #define COLOR_WHITE		GetColor( 255, 255, 255 )
 #define COLOR_BLACK		GetColor(   0,   0,   0 )
