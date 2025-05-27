@@ -1,155 +1,14 @@
 #include "Main.h"
 #include "Game.h"
 #include "Map.h"
-#include <sstream>
-# include <vector>
-#include <math.h>
+//# include <vector>
+//#include <math.h>
+//#include <algorithm>
 #include <fstream>
-#include <algorithm>
+#include <string>
+#include <sstream>
 using namespace std;
 
-//ファイル操作-----------------------------------------------------------------------------
-	// ファイルへの書き込み
-	//	戻り値
-	//		false: エラーが発生
-	//		true : 正常に完了
-	//	引数
-	//		std::string fname	書き込みを行うファイル名
-	//				int data	書き込むデータ
-bool OutputFile(std::string fname, int data, std::ios_base::openmode flg = std::ios::out)
-{
-	std::ofstream file(fname, flg);
-	if (file.is_open() == false)
-	{
-		return false;
-	}
-	
-	//file << data << std::endl;
-	
-	file.close();
-	return true;
-}
-// ファイルへの読み込み
-//	戻り値
-//		false: エラーが発生
-//		true : 正常に完了
-//	引数
-//		std::string  fname	読み込みを行うファイル名
-//				int& data	読み込まれたデータを入れるところ
-int s_cou_w = 0;
-int s_cou_h = 0;
-int map_include[MAP_H][MAP_W];
- bool InputFile(std::string fname)
-{
-	std::ifstream file(fname);
-	if (file.is_open() == false)
-	{
-		return false;
-	}
-	//s_cou = 0;
-	while (!file.eof())
-	{
-		//file >> map_include[s_cou_h++][s_cou_w++];
-	}
-
-	
-
-	file.close();
-	return true;
-}
-
-std::string mes;
-
-
-
-
-int tmp = 0;
-void Map::Load()
-{
-	// ファイルから読み込み＆書き込み
-	std::ifstream ifile("data/Map_Data");
-
-	// 開くのに成功
-	
-	
-	
-	for (int h = 0; h < MAP_H; ++h) {
-		for (int w = 0; w < MAP_W; ++w) {
-
-			//map_data[h][w] = 0;
-
-
-		}
-	}
-	if (ifile.is_open() == true)
-	{
-
-		while (true)
-		{
-			// ファイルからデータを読み込む
-			
-		
-			
-			if (ifile.eof() == true)
-			{
-				
-
-			break;
-			}
-			// ファイルのデータを配列に入れる
-			for (int w = 0; w < MAP_W; ++w) {
-				string line;
-				string file;// 
-
-
-				string str, s;
-				getline(ifile, line);
-				str = line;
-				stringstream ss{ str };
-				getline(ss, s, ',');;
-				tmp = std::stoi(s);
-				map_data[s_cou_h++][w] = tmp;
-				if (data_count_w >= MAP_W)
-				{
-					data_count_h++;
-					data_count_w = 0;
-
-					if (data_count_h >= MAP_H) {
-
-						break;
-					}
-				}
-			}
-
-			//tmp += 1;
-			
-		}
-		// ファイルを閉じる
-
-
-	
-	// 作ったデータをファイルへ書き出し
-		std::ofstream ofile("data/Map_Data.txt");
-		//
-		if (ofile.is_open() == true)
-		{
-			for (int h = 0; h < MAP_H; ++h) {
-				for (int w = 0; w < MAP_W; ++w) {
-
-					ofile << map_data[h][w] << ",";
-
-				}
-				ofile << std::endl;
-				// ファイルを閉じる
-
-			}
-			ofile.close();
-		}
-	}
-
-
-}
-\
 
 
 
@@ -159,16 +18,84 @@ void Map::Load()
 void Map::Init()
 {
 
-	Map_image_ = LoadGraph("data/map/map1.png");
-	Load();
+	Map_image_ = LoadGraph("data/map/map1.png");  //とりあえずマップの画像を入る
+
+	//いろいろな画像を初期化する
+	Ground_image_ = LoadGraph("data/map/Ground.png");
+
+
+	// ファイルから読み込み
+	ifstream file("data/map/txt/map1.txt", ios::in);
+
+	//ファイルが開けるかどうか
+	if (!file.is_open()) {
+		printfDx("ファイルを開けませんでした\n");
+		return;
+	}
+
+
+
+
+
+	for (int h = 0; h < MAP_H; ++h) {
+
+		//マップ文字列を代入
+		string str;
+
+		getline(file, str);
+
+		//文字列の分割
+		stringstream sstr(str);
+
+		for (int w = 0; w < MAP_W; ++w) {
+
+			//分割した文字を保存する用変数
+			int num = 0;
+
+			//変数に代入
+			sstr >> num;
+
+			//マップに代入
+			map[h][w] = num;
+		}
+	}
+
+
+	//ファイルを閉める
+	file.close();
+
+	//マップの座標を初期化する
+	pos_ = { 0.0f,0.0f };
+
 }
 
 
 //---------------------------------------------------------------------------------
 //	更新処理
 //---------------------------------------------------------------------------------
-void Map::Update()
+void Map::Update(Float2& player_pos)
 {
+
+
+	//プレイヤーが地面に触れると、落下しなくなります
+	if (map[((int)player_pos.y / GROUND_SIZE)][((int)player_pos.x / GROUND_SIZE) == 1])
+	{
+
+	}
+	else
+	{
+		//プレイヤーは重力を受ける
+		player_pos.y += 5.0f;
+	}
+
+
+	//プレイヤーの移動に伴って地図も移動する(暫く)
+	if (CheckHitKey(KEY_INPUT_D))
+	{
+		pos_.x -= 5.0f;
+	}
+
+
 
 }
 
@@ -177,18 +104,25 @@ void Map::Update()
 //---------------------------------------------------------------------------------
 void Map::Render()
 {
-	//
-	//for (int h = 0; h < MAP_H; ++h) {
-	//	for (int w = 0; w < MAP_W; ++w) {
 
-	//		if (map_data[h][w] == 0) {
-	//			//DrawRotaGraph(w * 50, h * (SCREEN_H / MAP_H),0.5f,0, blo_i, true);
-	//			//DrawFormatString(w * 50, h * 50, GetColor(255, 255, 255), "%d", map_data[h][w]);
+	DrawGraphF(pos_.x, pos_.y, Map_image_, TRUE);
 
-	//		}
-	//	}
-	//}
-	DrawGraph(0, 0, Map_image_, TRUE);
+	//DrawFormatString(10 + 10, 10, GetColor(255, 255, 255), "%d", map[-2][1]);
+
+
+
+	//二次元配列でマップを描画する
+	/*for (int h = 0; h < MAP_H; ++h)
+	{
+		for (int w = 0; w < MAP_W; ++w)
+		{
+			if (map[h][w] == 1)
+			{
+				DrawGraph(w * GROUND_SIZE, h * GROUND_SIZE, Ground_image_, TRUE);
+			}
+		}
+	}*/
+
 }
 
 
@@ -198,7 +132,7 @@ void Map::Render()
 
 void Map::Exit()
 {
-	
+
 
 }
 

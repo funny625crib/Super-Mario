@@ -3,11 +3,13 @@
 #include "Object.h"
 #include "base.h"
 
-
 class Map :
 	public Base {
 
 public:
+
+	//床タイルのサイズ
+#define GROUND_SIZE 37
 
 
 	int Ground_image_;          //地面の画像
@@ -17,18 +19,17 @@ public:
 
 	int Map_image_;      //実験用画像
 
-    #define MAP_H 14
-    #define MAP_W 191           
 
-	int map_data[MAP_H][MAP_W];
+#define MAP_H 14
+#define MAP_W 191           
+
+	int map[MAP_H][MAP_W];
 	int data_count_w;
 	int data_count_h;
 
 
-
-	void Load();
 	void Init();     //	初期化処理
-	void Update();	//	更新処理
+	void Update(Float2& player_pos);	//	更新処理
 	void Render();	//	描画処理
 	void Exit();		//	終了処理
 
