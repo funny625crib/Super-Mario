@@ -1,0 +1,5 @@
+０：　空気
+１：　Ground
+２：  Ground1
+３：  box
+４：　Wall

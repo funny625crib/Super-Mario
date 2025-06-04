@@ -156,6 +156,7 @@
     <ClCompile Include="program\Hit.cpp" />
     <ClCompile Include="program\Main.cpp" />
     <ClCompile Include="program\Map.cpp" />
+    <ClCompile Include="program\Player.cpp" />
     <ClCompile Include="program\Random.cpp" />
     <ClCompile Include="program\Float2.cpp" />
   </ItemGroup>
@@ -165,6 +166,7 @@
     <ClInclude Include="program\Hit.h" />
     <ClInclude Include="program\Main.h" />
     <ClInclude Include="program\Map.h" />
+    <ClInclude Include="program\Player.h" />
     <ClInclude Include="program\Random.h" />
     <ClInclude Include="program\Float2.h" />
   </ItemGroup>

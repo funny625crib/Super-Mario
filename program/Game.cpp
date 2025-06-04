@@ -7,7 +7,7 @@
 
 Map map;
 
-Float2 box = { 10.0f,0.0f };
+Float2 box = { 20.0f,0.0f };
 
 //---------------------------------------------------------------------------------
 //	初期化処理
@@ -46,8 +46,12 @@ void GameRender()
 	
 	map.Render();
 	DrawCircle(box.x, box.y, 10, GetColor(255, 255, 255), TRUE);
+
+	//確認用
 	DrawFormatString(10 + 20, 10, GetColor(255, 255, 255), "%d", ((int)box.y / GROUND_SIZE));
-	
+	DrawFormatString(10 + 50, 10, GetColor(255, 255, 255), "%d", ((int)(box.x-map.pos_.x) / GROUND_SIZE));
+
+	DrawFormatString(10 + 90, 10, GetColor(255, 255, 255), "%d", map.map[((int)box.y / GROUND_SIZE)][((int)(box.x - map.pos_.x) / GROUND_SIZE)]);
 }
 //---------------------------------------------------------------------------------
 //	終了処理

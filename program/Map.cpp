@@ -1,9 +1,6 @@
 #include "Main.h"
 #include "Game.h"
 #include "Map.h"
-//# include <vector>
-//#include <math.h>
-//#include <algorithm>
 #include <fstream>
 #include <string>
 #include <sstream>
@@ -22,6 +19,9 @@ void Map::Init()
 
 	//いろいろな画像を初期化する
 	Ground_image_ = LoadGraph("data/map/Ground.png");
+	Ground1_image_ = LoadGraph("data/map/Ground1.png");
+	Box_image_ = LoadGraph("data/map/Box.png");
+	Wall_image_ = LoadGraph("data/map/Wall.png");
 
 
 	// ファイルから読み込み
@@ -32,10 +32,6 @@ void Map::Init()
 		printfDx("ファイルを開けませんでした\n");
 		return;
 	}
-
-
-
-
 
 	for (int h = 0; h < MAP_H; ++h) {
 
@@ -67,6 +63,18 @@ void Map::Init()
 	//マップの座標を初期化する
 	pos_ = { 0.0f,0.0f };
 
+
+	for (int h = 0; h < MAP_H; ++h)
+	{
+		for (int w = 0; w < MAP_W; ++w)
+		{
+			image_x[h][w] = w * GROUND_SIZE;
+			image_y[h][w] = h * GROUND_SIZE;
+
+		}
+	}
+
+
 }
 
 
@@ -78,7 +86,7 @@ void Map::Update(Float2& player_pos)
 
 
 	//プレイヤーが地面に触れると、落下しなくなります
-	if (map[((int)player_pos.y / GROUND_SIZE)][((int)player_pos.x / GROUND_SIZE) == 1])
+	if (map[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x-pos_.x) / GROUND_SIZE)]!= 0)
 	{
 
 	}
@@ -88,14 +96,32 @@ void Map::Update(Float2& player_pos)
 		player_pos.y += 5.0f;
 	}
 
-
-	//プレイヤーの移動に伴って地図も移動する(暫く)
-	if (CheckHitKey(KEY_INPUT_D))
+	//壁にぶつかると前に進めない
+	if (map[((int)player_pos.y / GROUND_SIZE) - 1][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] != 0)
 	{
-		pos_.x -= 5.0f;
+		player_pos.x -= 5.0f;
 	}
 
 
+
+	//プレイヤーの移動に伴って地図も移動する(暫く)
+	if (CheckHitKey(KEY_INPUT_D)&&map[((int)player_pos.y / GROUND_SIZE)-1][((int)(player_pos.x - pos_.x) / GROUND_SIZE) ] == 0)
+	{
+		pos_.x -= 5.0f;
+		for (int h = 0; h < MAP_H; ++h)
+		{
+			for (int w = 0; w < MAP_W; ++w)
+			{
+				image_x[h][w] -= 5.0f;
+
+			}
+		}
+	}
+
+	if (pos_.x < -IMAGE_W + SCREEN_W)
+	{
+		pos_.x = -IMAGE_W + SCREEN_W;
+	}
 
 }
 
@@ -105,23 +131,37 @@ void Map::Update(Float2& player_pos)
 void Map::Render()
 {
 
-	DrawGraphF(pos_.x, pos_.y, Map_image_, TRUE);
+	//DrawGraphF(pos_.x, pos_.y, Map_image_, TRUE);    //参照用マップ
+
+	DrawBox(0, 0, SCREEN_W, SCREEN_H, GetColor(97, 124, 182), TRUE);   //背景
 
 	//DrawFormatString(10 + 10, 10, GetColor(255, 255, 255), "%d", map[-2][1]);
 
 
 
 	//二次元配列でマップを描画する
-	/*for (int h = 0; h < MAP_H; ++h)
+	for (int h = 0; h < MAP_H; ++h)
 	{
 		for (int w = 0; w < MAP_W; ++w)
 		{
-			if (map[h][w] == 1)
+			if (map[h][w] == 1)    //Ground
 			{
-				DrawGraph(w * GROUND_SIZE, h * GROUND_SIZE, Ground_image_, TRUE);
+				DrawGraph(image_x[h][w], image_y[h][w], Ground_image_, TRUE);
+			}
+			if (map[h][w] == 2)      //Ground1
+			{
+				DrawGraph(image_x[h][w], image_y[h][w], Ground1_image_, TRUE);
+			}
+			if (map[h][w] == 3)      //box
+			{
+				DrawGraph(image_x[h][w], image_y[h][w], Box_image_, TRUE);
+			}
+			if (map[h][w] == 4)      //wall
+			{
+				DrawGraph(image_x[h][w], image_y[h][w], Wall_image_, TRUE);
 			}
 		}
-	}*/
+	}
 
 }
 
@@ -132,8 +172,8 @@ void Map::Render()
 
 void Map::Exit()
 {
-
-
+	DeleteGraph(Ground_image_);
+	DeleteGraph(Ground1_image_);
 }
 
 

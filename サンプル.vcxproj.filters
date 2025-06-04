@@ -33,6 +33,9 @@
     <ClCompile Include="program\Map.cpp">
       <Filter>program\game</Filter>
     </ClCompile>
+    <ClCompile Include="program\Player.cpp">
+      <Filter>program\game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="program\Game.h">
@@ -54,6 +57,9 @@
       <Filter>program\game</Filter>
     </ClInclude>
     <ClInclude Include="program\Map.h">
+      <Filter>program\game</Filter>
+    </ClInclude>
+    <ClInclude Include="program\Player.h">
       <Filter>program\game</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,2 +1,4 @@
-﻿  Map.cpp
-  サンプル.vcxproj -> D:\チーム制作\Super Mario\x64\Debug\サンプル.exe
+﻿  Game.cpp
+F:\チーム制作\Super Mario\program\Game.cpp(48,23): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+F:\チーム制作\Super Mario\program\Game.cpp(48,16): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+  サンプル.vcxproj -> F:\チーム制作\Super Mario\x64\Debug\サンプル.exe
