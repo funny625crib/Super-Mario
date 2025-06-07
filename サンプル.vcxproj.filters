@@ -30,7 +30,13 @@
     <ClCompile Include="program\base.cpp">
       <Filter>program\game</Filter>
     </ClCompile>
-    <ClCompile Include="program\map.cpp">
+    <ClCompile Include="program\Map.cpp">
+      <Filter>program\game</Filter>
+    </ClCompile>
+    <ClCompile Include="program\Player.cpp">
+      <Filter>program\game</Filter>
+    </ClCompile>
+    <ClCompile Include="program\agaric.cpp">
       <Filter>program\game</Filter>
     </ClCompile>
   </ItemGroup>
@@ -53,7 +59,13 @@
     <ClInclude Include="program\base.h">
       <Filter>program\game</Filter>
     </ClInclude>
-    <ClInclude Include="program\map.h">
+    <ClInclude Include="program\Map.h">
+      <Filter>program\game</Filter>
+    </ClInclude>
+    <ClInclude Include="program\Player.h">
+      <Filter>program\game</Filter>
+    </ClInclude>
+    <ClInclude Include="program\agaric.h">
       <Filter>program\game</Filter>
     </ClInclude>
   </ItemGroup>

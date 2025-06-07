@@ -1,0 +1,4 @@
+﻿  agaric.cpp
+F:\チーム制作\Super Mario\program\agaric.cpp(74,24): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+F:\チーム制作\Super Mario\program\agaric.cpp(74,16): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+  サンプル.vcxproj -> F:\チーム制作\Super Mario\x64\Debug\サンプル.exe
