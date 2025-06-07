@@ -40,6 +40,16 @@ int image_y[MAP_H][MAP_W];
 	//プレイヤーの前は壁があるかどうか
 	bool is_wall_have;
 
+	//壁に当たったら、壁のアニメーション
+	bool is_hit;
+	//この壁の座標を記録する用変数
+	int wall_x;
+	int wall_y;
+
+
+	//箱の表示部分の座標
+	int box_image_x[MAP_H][MAP_W];
+	int box_image_y[MAP_H][MAP_W];
 
 	void Init();     //	初期化処理
 	void Update(Float2& player_pos, bool& jump_mode, int jump_frame);	//	更新処理

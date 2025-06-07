@@ -62,7 +62,7 @@ void Map::Init()
 	file.close();
 
 	//マップの座標を初期化する
-	pos_ = { 0.0f,0.0f };
+	pos_ = { -10.0f,0.0f };
 
 
 	for (int h = 0; h < MAP_H; ++h)
@@ -71,7 +71,8 @@ void Map::Init()
 		{
 			image_x[h][w] = w * GROUND_SIZE;
 			image_y[h][w] = h * GROUND_SIZE;
-
+			box_image_x[h][w] = 0;
+			box_image_y[h][w] = 0;
 		}
 	}
 
@@ -79,6 +80,8 @@ void Map::Init()
 	is_on_ground = true;
 
 	is_wall_have = false;
+
+	is_hit = false;
 }
 
 
@@ -92,15 +95,14 @@ void Map::Update(Float2& player_pos, bool& jump_mode, int jump_frame)
 	if (map[((int)player_pos.y / GROUND_SIZE) + 1][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] != 0)    //地面
 	{
 		is_on_ground = true;
-
 	}
-	else       
+	else
 	{
 		//プレイヤーは重力を受ける
 		player_pos.y += 5.0f;
 		is_on_ground = false;
 
-		if (jump_frame>20)
+		if (jump_frame > 20)
 		{
 			jump_mode = false;
 		}
@@ -123,7 +125,32 @@ void Map::Update(Float2& player_pos, bool& jump_mode, int jump_frame)
 		jump_mode = false;
 	}
 
+	//壁にぶつかると壁は上に進める
+	if (map[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] == 4)
+	{
+		is_hit = true;
+		wall_x = ((int)player_pos.y / GROUND_SIZE);
+		wall_y = ((int)(player_pos.x - pos_.x) / GROUND_SIZE);
+	}
+	else if (map[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] == 3)   //箱に当たったら
+	{
+		is_hit = true;
+		wall_x = ((int)player_pos.y / GROUND_SIZE);
+		wall_y = ((int)(player_pos.x - pos_.x) / GROUND_SIZE);
+		box_image_x[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] = 3 * GROUND_SIZE;
+	}
 
+	if (is_hit == true)
+	{
+		static int speed = 5.0f;
+		speed--;
+		image_y[wall_x][wall_y] -= speed;
+		if (speed <= -4.0f)
+		{
+			is_hit = false;
+			speed = 5.0f;
+		}
+	}
 
 	//プレイヤーの移動に伴って地図も移動する(プレイヤーの位置が地図の真ん中にある場合)
 	if (CheckHitKey(KEY_INPUT_D) && player_pos.x >= SCREEN_W / 2)
@@ -144,6 +171,33 @@ void Map::Update(Float2& player_pos, bool& jump_mode, int jump_frame)
 		pos_.x = -IMAGE_W + SCREEN_W;
 	}
 
+
+	//箱のアニメーション
+	static int frame;
+	frame++;
+	static int box_speed = 35;
+	if (frame % 10 == 0 && frame != 0)
+	{
+		for (int h = 0; h < MAP_H; ++h)
+		{
+			for (int w = 0; w < MAP_W; ++w)
+			{
+				if (box_image_x[h][w] != 3 * GROUND_SIZE)
+				{
+					box_image_x[h][w] += box_speed;
+					if (box_image_x[h][w] > 2 * GROUND_SIZE || box_image_x[h][w] < 0)
+					{
+						box_speed = -box_speed;
+					}
+				}
+
+			}
+		}
+	}
+
+
+
+
 }
 
 //---------------------------------------------------------------------------------
@@ -152,12 +206,10 @@ void Map::Update(Float2& player_pos, bool& jump_mode, int jump_frame)
 void Map::Render()
 {
 
-	//DrawGraphF(pos_.x, pos_.y, Map_image_, TRUE);    //参照用マップ
+
 
 	DrawBox(0, 0, SCREEN_W, SCREEN_H, GetColor(97, 124, 182), TRUE);   //背景
-
-	//DrawFormatString(10 + 10, 10, GetColor(255, 255, 255), "%d", map[-2][1]);
-
+	DrawGraphF(pos_.x, pos_.y, Map_image_, TRUE);    //背景
 
 
 	//二次元配列でマップを描画する
@@ -175,7 +227,7 @@ void Map::Render()
 			}
 			if (map[h][w] == 3)      //box
 			{
-				DrawGraph(image_x[h][w], image_y[h][w], Box_image_, TRUE);
+				DrawRectGraph(image_x[h][w], image_y[h][w], box_image_x[h][w], box_image_y[h][w], GROUND_SIZE, GROUND_SIZE, Box_image_, TRUE);
 			}
 			if (map[h][w] == 4)      //wall
 			{

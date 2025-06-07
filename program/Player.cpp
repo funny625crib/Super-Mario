@@ -33,14 +33,14 @@ void Player::Update(bool& is_on_ground, bool is_wall_have)
 	static int player_frame;
 
 	//一時てきにプレイヤーの代わりに操作する
-	if (PushHitKey(KEY_INPUT_SPACE)&&is_on_ground==true)
+	if (PushHitKey(KEY_INPUT_SPACE) && is_on_ground == true)
 	{
 		is_jump = true;
 		is_on_ground = false;
 		jump_frame = 0;
 	}
-	
-	if (CheckHitKey(KEY_INPUT_D)&&is_wall_have==false)
+
+	if (CheckHitKey(KEY_INPUT_D) && is_wall_have == false)
 	{
 		mode_ = MODE_MOVE;
 		pos_.x += PLAYER_MOVE_SPEED;     //RIGHT
@@ -59,19 +59,19 @@ void Player::Update(bool& is_on_ground, bool is_wall_have)
 	if (is_jump == true)
 	{
 		jump_frame++;
-		if (jump_frame <20)
+		if (jump_frame < 20)
 		{
 			pos_.y -= 15.0f;
 		}
-		
+
 		//ジャンプの画像に変える
 		image_x = 5 * PLAYER_IMAGE_W;
 	}
 
-	
+
 
 	//何のキーが押されていないとき
-	if (CheckHitKeyAll() == 0&&is_jump==false)
+	if (CheckHitKeyAll() == 0)
 	{
 		mode_ = MODE_IDLE;
 	}
@@ -87,7 +87,11 @@ void Player::Update(bool& is_on_ground, bool is_wall_have)
 	switch (mode_)
 	{
 	case MODE_IDLE:
-		image_x = 0;
+		if (is_jump == false)
+		{
+			image_x = 0;
+		}
+
 		break;
 	case MODE_MOVE:
 		//プレイヤーの移動に伴って画像が変化する
@@ -101,7 +105,7 @@ void Player::Update(bool& is_on_ground, bool is_wall_have)
 			}
 		}
 		break;
-	
+
 	}
 
 }
@@ -111,8 +115,6 @@ void Player::Update(bool& is_on_ground, bool is_wall_have)
 void Player::Render()
 {
 	DrawRectGraphF(pos_.x, pos_.y, image_x, image_y, PLAYER_IMAGE_W, PLAYER_IMAGE_H, image_, TRUE, is_overturn);
-
-
 }
 //---------------------------------------------------------------------------------
 //	終了処理
