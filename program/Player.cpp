@@ -26,7 +26,7 @@ void Player::Init()
 //---------------------------------------------------------------------------------
 //	更新処理
 //---------------------------------------------------------------------------------
-void Player::Update(bool& is_on_ground, bool is_wall_have)
+void Player::Update(bool& is_on_ground, bool is_wall_have,float& agaric_pos_x)
 {
 
 	//フレーム
@@ -42,6 +42,7 @@ void Player::Update(bool& is_on_ground, bool is_wall_have)
 
 	if (CheckHitKey(KEY_INPUT_D) && is_wall_have == false)
 	{
+		agaric_pos_x -= 3.0f;
 		mode_ = MODE_MOVE;
 		pos_.x += PLAYER_MOVE_SPEED;     //RIGHT
 		//画像を反転しません

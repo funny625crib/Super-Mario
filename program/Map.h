@@ -51,6 +51,9 @@ int image_y[MAP_H][MAP_W];
 	int box_image_x[MAP_H][MAP_W];
 	int box_image_y[MAP_H][MAP_W];
 
+	//プレイヤーとキノコが含む箱が当たるかどうか
+	bool agaric_is_hit;
+
 	void Init();     //	初期化処理
 	void Update(Float2& player_pos, bool& jump_mode, int jump_frame);	//	更新処理
 	void Render();	//	描画処理

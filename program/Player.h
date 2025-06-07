@@ -35,7 +35,7 @@ public:
 	int jump_frame;
 
 	void Init();     //	初期化処理
-	void Update(bool& is_on_ground, bool is_wall_have);	//	更新処理
+	void Update(bool& is_on_ground, bool is_wall_have, float& agaric_pos_x);	//	更新処理
 	void Render();	//	描画処理
 	void Exit();		//	終了処理
 

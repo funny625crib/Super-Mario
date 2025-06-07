@@ -82,6 +82,8 @@ void Map::Init()
 	is_wall_have = false;
 
 	is_hit = false;
+
+	agaric_is_hit = false;
 }
 
 
@@ -110,7 +112,8 @@ void Map::Update(Float2& player_pos, bool& jump_mode, int jump_frame)
 	}
 
 	//ï«Ç…Ç‘Ç¬Ç©ÇÈÇ∆ëOÇ…êiÇﬂÇ»Ç¢
-	if (map[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x - pos_.x) / GROUND_SIZE) + 1] != 0)   //ï«
+	if (map[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x - pos_.x) / GROUND_SIZE) + 1] != 0
+		|| map[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x - pos_.x) / GROUND_SIZE) - 1] != 0)   //ï«
 	{
 		is_wall_have = true;
 	}
@@ -138,6 +141,12 @@ void Map::Update(Float2& player_pos, bool& jump_mode, int jump_frame)
 		wall_x = ((int)player_pos.y / GROUND_SIZE);
 		wall_y = ((int)(player_pos.x - pos_.x) / GROUND_SIZE);
 		box_image_x[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] = 3 * GROUND_SIZE;
+
+		//ÉLÉmÉRÇ™ä‹Çﬁî†Ç…ìñÇΩÇ¡ÇΩÇÁ
+		if (((int)player_pos.y / GROUND_SIZE) == 8 && ((int)(player_pos.x - pos_.x) / GROUND_SIZE) == 20)
+		{
+			agaric_is_hit = true;
+		}
 	}
 
 	if (is_hit == true)
@@ -206,9 +215,6 @@ void Map::Update(Float2& player_pos, bool& jump_mode, int jump_frame)
 void Map::Render()
 {
 
-
-
-	DrawBox(0, 0, SCREEN_W, SCREEN_H, GetColor(97, 124, 182), TRUE);   //îwåi
 	DrawGraphF(pos_.x, pos_.y, Map_image_, TRUE);    //îwåi
 
 
