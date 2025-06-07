@@ -34,9 +34,15 @@ int image_y[MAP_H][MAP_W];
 	int data_count_w;
 	int data_count_h;
 
+	//プレイヤーが地面にいるかどうか
+	bool is_on_ground;
+
+	//プレイヤーの前は壁があるかどうか
+	bool is_wall_have;
+
 
 	void Init();     //	初期化処理
-	void Update(Float2& player_pos);	//	更新処理
+	void Update(Float2& player_pos, bool& jump_mode, int jump_frame);	//	更新処理
 	void Render();	//	描画処理
 	void Exit();		//	終了処理
 

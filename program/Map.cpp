@@ -1,6 +1,7 @@
 #include "Main.h"
 #include "Game.h"
 #include "Map.h"
+#include "Player.h"
 #include <fstream>
 #include <string>
 #include <sstream>
@@ -74,45 +75,65 @@ void Map::Init()
 		}
 	}
 
+	//最初は地面に当たっている
+	is_on_ground = true;
 
+	is_wall_have = false;
 }
 
 
 //---------------------------------------------------------------------------------
 //	更新処理
 //---------------------------------------------------------------------------------
-void Map::Update(Float2& player_pos)
+void Map::Update(Float2& player_pos, bool& jump_mode, int jump_frame)
 {
 
-
 	//プレイヤーが地面に触れると、落下しなくなります
-	if (map[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x-pos_.x) / GROUND_SIZE)]!= 0)
+	if (map[((int)player_pos.y / GROUND_SIZE) + 1][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] != 0)    //地面
 	{
+		is_on_ground = true;
 
 	}
-	else
+	else       
 	{
 		//プレイヤーは重力を受ける
 		player_pos.y += 5.0f;
+		is_on_ground = false;
+
+		if (jump_frame>20)
+		{
+			jump_mode = false;
+		}
+
 	}
 
 	//壁にぶつかると前に進めない
-	if (map[((int)player_pos.y / GROUND_SIZE) - 1][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] != 0)
+	if (map[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x - pos_.x) / GROUND_SIZE) + 1] != 0)   //壁
 	{
-		player_pos.x -= 5.0f;
+		is_wall_have = true;
+	}
+	else
+	{
+		is_wall_have = false;
+	}
+
+	//壁にぶつかると上に進めない
+	if (map[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] != 0)
+	{
+		jump_mode = false;
 	}
 
 
 
-	//プレイヤーの移動に伴って地図も移動する(暫く)
-	if (CheckHitKey(KEY_INPUT_D)&&map[((int)player_pos.y / GROUND_SIZE)-1][((int)(player_pos.x - pos_.x) / GROUND_SIZE) ] == 0)
+	//プレイヤーの移動に伴って地図も移動する(プレイヤーの位置が地図の真ん中にある場合)
+	if (CheckHitKey(KEY_INPUT_D) && player_pos.x >= SCREEN_W / 2)
 	{
-		pos_.x -= 5.0f;
+		pos_.x -= 3.0f;   //プレイヤーの移動距離を記録する
 		for (int h = 0; h < MAP_H; ++h)
 		{
 			for (int w = 0; w < MAP_W; ++w)
 			{
-				image_x[h][w] -= 5.0f;
+				image_x[h][w] -= 3;
 
 			}
 		}
