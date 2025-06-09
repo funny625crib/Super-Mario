@@ -2,11 +2,40 @@
 #include "Game.h"
 #include "Map.h"
 #include "Player.h"
+#include "agaric.h"
 #include <fstream>
 #include <string>
 #include <sstream>
 using namespace std;
 
+//---------------------------------------------------------------------------------
+//	キリコとマップの当たり判定
+//---------------------------------------------------------------------------------
+void Map::agaric_hit(Float2& agaric_pos, float& agaric_speed,int agaric_mode)
+{
+	//キリコの右は壁なら,左に行きます
+	if (map[((int)agaric_pos.y / GROUND_SIZE)][((int)(agaric_pos.x - pos_.x) / GROUND_SIZE)] == 5&& agaric_mode == Agaric::MODE_MOVE)
+	{
+		agaric_speed = -agaric_speed;
+	}
+
+	//キリコが地面に触れると、落下しなくなります
+	if (map[((int)agaric_pos.y / GROUND_SIZE) + 1][((int)(agaric_pos.x - pos_.x) / GROUND_SIZE)] != 0)    //地面
+	{
+
+	}
+	else if(agaric_mode == Agaric::MODE_MOVE)
+	{
+		//キリコは重力を受ける
+		agaric_pos.y += 5.0f;
+		
+	}
+
+}
+
+//---------------------------------------------------------------------------------
+//	プレイヤーとマップの当たり判定
+//---------------------------------------------------------------------------------
 
 
 
@@ -254,6 +283,8 @@ void Map::Exit()
 	DeleteGraph(Ground_image_);
 	DeleteGraph(Ground1_image_);
 }
+
+
 
 
 

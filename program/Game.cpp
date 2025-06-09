@@ -27,12 +27,15 @@ void GameInit()
 //---------------------------------------------------------------------------------
 void GameUpdate()
 {
-	map.Update(player.pos_,player.is_jump,player.jump_frame);
+	map.Update(player.pos_, player.is_jump, player.jump_frame);
 
-	player.Update(map.is_on_ground,map.is_wall_have,agaric.pos_.x);
+	player.Update(map.is_on_ground, map.is_wall_have, agaric.pos_.x);
 
-	agaric.Update(map.image_x[8][20], map.image_y[8][20],map.agaric_is_hit,map.pos_.x);
-	
+	agaric.Update(map.image_x[8][20], map.image_y[8][20], map.agaric_is_hit, map.pos_.x);
+
+
+	//	キリコとマップの当たり判定
+	map.agaric_hit(agaric.pos_, agaric.speed, agaric.mode_);
 }
 //---------------------------------------------------------------------------------
 //	描画処理
@@ -43,11 +46,11 @@ void GameRender()
 	agaric.Render();
 	map.Render();
 	player.Render();
-	
+
 
 	//確認用
 	DrawFormatString(10 + 20, 10, GetColor(255, 255, 255), "%d", ((int)player.pos_.y / GROUND_SIZE));
-	DrawFormatString(10 + 50, 10, GetColor(255, 255, 255), "%d", ((int)(player.pos_.x-map.pos_.x) / GROUND_SIZE));
+	DrawFormatString(10 + 50, 10, GetColor(255, 255, 255), "%d", ((int)(player.pos_.x - map.pos_.x) / GROUND_SIZE));
 
 	DrawFormatString(10 + 90, 10, GetColor(255, 255, 255), "%d", map.map[((int)player.pos_.y / GROUND_SIZE)][((int)(player.pos_.x - map.pos_.x) / GROUND_SIZE)]);
 }
