@@ -1,18 +1,25 @@
 #pragma once
 #include "Float2.h"
 #include "Enemys.h"
-namespace __Goomba {
-	class _Goomba :public __Enenys::_Enemys {
+#include "Map.h"
 
-	public:
-		int image;
+const int GOOMBA_MAX = 15;
+	class Goomba :public __Enenys::_Enemys {
 
-
-
-		void GoombaInit();
-		void GoombaUpdate();
-		void GoombaRender();
-		void GoombaExit();
+	public://e
+		
+		int image_[2];
+		int image_death_;
+		float map_move_;
+		int goomba_flashing_flame;
+		int image_index;
+		bool hit_player=false;
+		int count_enemy_num=0;
+		int map_data[MAP_H][MAP_W];
+		void Init();
+		void Update(Float2& player_pos,float player_r, float map_move);
+		void Render(int& map, int h, int w);
+		void Exit();
 
 	private:
 
@@ -20,4 +27,3 @@ namespace __Goomba {
 
 
 	};
-}

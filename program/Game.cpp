@@ -6,11 +6,11 @@
 #include "Map.h"
 #include "player.h"
 #include "agaric.h"
-
+#include "Goomba.h"
 Map map;
 
 Player player;
-
+ Goomba  goomba;
 Agaric agaric;   //キリコ
 
 //---------------------------------------------------------------------------------
@@ -21,6 +21,7 @@ void GameInit()
 	map.Init();
 	player.Init();
 	agaric.Init();
+	goomba.Init();
 }
 //---------------------------------------------------------------------------------
 //	更新処理
@@ -33,6 +34,7 @@ void GameUpdate()
 
 	agaric.Update(map.image_x[8][20], map.image_y[8][20],map.agaric_is_hit,map.pos_.x);
 	
+	goomba.Update(player.pos_, PLAYER_IMAGE_W/2, map.pos_.x);
 }
 //---------------------------------------------------------------------------------
 //	描画処理
@@ -43,7 +45,7 @@ void GameRender()
 	agaric.Render();
 	map.Render();
 	player.Render();
-	
+	goomba.Render(map.image_x[10][20],5,10);
 
 	//確認用
 	DrawFormatString(10 + 20, 10, GetColor(255, 255, 255), "%d", ((int)player.pos_.y / GROUND_SIZE));
@@ -59,4 +61,5 @@ void GameExit()
 	map.Exit();
 	player.Exit();
 	agaric.Exit();
+	goomba.Exit();
 }
