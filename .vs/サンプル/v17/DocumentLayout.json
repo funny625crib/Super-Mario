@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "F:\\\u30C1\u30FC\u30E0\u5236\u4F5C\\Super Mario\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{AA33BDDF-F69C-4502-AE89-1093B08F52DD}|\u30B5\u30F3\u30D7\u30EB.vcxproj|F:\\\u30C1\u30FC\u30E0\u5236\u4F5C\\Super Mario\\program\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{AA33BDDF-F69C-4502-AE89-1093B08F52DD}|\u30B5\u30F3\u30D7\u30EB.vcxproj|solutionrelative:program\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{AA33BDDF-F69C-4502-AE89-1093B08F52DD}|\u30B5\u30F3\u30D7\u30EB.vcxproj|F:\\\u30C1\u30FC\u30E0\u5236\u4F5C\\Super Mario\\program\\Map.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{AA33BDDF-F69C-4502-AE89-1093B08F52DD}|\u30B5\u30F3\u30D7\u30EB.vcxproj|solutionrelative:program\\Map.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AA33BDDF-F69C-4502-AE89-1093B08F52DD}|\u30B5\u30F3\u30D7\u30EB.vcxproj|F:\\\u30C1\u30FC\u30E0\u5236\u4F5C\\Super Mario\\program\\Map.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{AA33BDDF-F69C-4502-AE89-1093B08F52DD}|\u30B5\u30F3\u30D7\u30EB.vcxproj|solutionrelative:program\\Map.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{AA33BDDF-F69C-4502-AE89-1093B08F52DD}|\u30B5\u30F3\u30D7\u30EB.vcxproj|F:\\\u30C1\u30FC\u30E0\u5236\u4F5C\\Super Mario\\program\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{AA33BDDF-F69C-4502-AE89-1093B08F52DD}|\u30B5\u30F3\u30D7\u30EB.vcxproj|solutionrelative:program\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AA33BDDF-F69C-4502-AE89-1093B08F52DD}|\u30B5\u30F3\u30D7\u30EB.vcxproj|F:\\\u30C1\u30FC\u30E0\u5236\u4F5C\\Super Mario\\program\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{AA33BDDF-F69C-4502-AE89-1093B08F52DD}|\u30B5\u30F3\u30D7\u30EB.vcxproj|solutionrelative:program\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA33BDDF-F69C-4502-AE89-1093B08F52DD}|\u30B5\u30F3\u30D7\u30EB.vcxproj|F:\\\u30C1\u30FC\u30E0\u5236\u4F5C\\Super Mario\\program\\Map.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{AA33BDDF-F69C-4502-AE89-1093B08F52DD}|\u30B5\u30F3\u30D7\u30EB.vcxproj|solutionrelative:program\\Map.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AA33BDDF-F69C-4502-AE89-1093B08F52DD}|\u30B5\u30F3\u30D7\u30EB.vcxproj|F:\\\u30C1\u30FC\u30E0\u5236\u4F5C\\Super Mario\\program\\agaric.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -23,16 +31,12 @@
       "RelativeMoniker": "D:0:0:{AA33BDDF-F69C-4502-AE89-1093B08F52DD}|\u30B5\u30F3\u30D7\u30EB.vcxproj|solutionrelative:program\\agaric.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{AA33BDDF-F69C-4502-AE89-1093B08F52DD}|\u30B5\u30F3\u30D7\u30EB.vcxproj|F:\\\u30C1\u30FC\u30E0\u5236\u4F5C\\Super Mario\\program\\Hit.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{AA33BDDF-F69C-4502-AE89-1093B08F52DD}|\u30B5\u30F3\u30D7\u30EB.vcxproj|solutionrelative:program\\Hit.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{AA33BDDF-F69C-4502-AE89-1093B08F52DD}|\u30B5\u30F3\u30D7\u30EB.vcxproj|F:\\\u30C1\u30FC\u30E0\u5236\u4F5C\\Super Mario\\program\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{AA33BDDF-F69C-4502-AE89-1093B08F52DD}|\u30B5\u30F3\u30D7\u30EB.vcxproj|solutionrelative:program\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AA33BDDF-F69C-4502-AE89-1093B08F52DD}|\u30B5\u30F3\u30D7\u30EB.vcxproj|F:\\\u30C1\u30FC\u30E0\u5236\u4F5C\\Super Mario\\program\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{AA33BDDF-F69C-4502-AE89-1093B08F52DD}|\u30B5\u30F3\u30D7\u30EB.vcxproj|solutionrelative:program\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AA33BDDF-F69C-4502-AE89-1093B08F52DD}|\u30B5\u30F3\u30D7\u30EB.vcxproj|F:\\\u30C1\u30FC\u30E0\u5236\u4F5C\\Super Mario\\program\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{AA33BDDF-F69C-4502-AE89-1093B08F52DD}|\u30B5\u30F3\u30D7\u30EB.vcxproj|solutionrelative:program\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,17 +46,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Map.h",
               "DocumentMoniker": "F:\\\u30C1\u30FC\u30E0\u5236\u4F5C\\Super Mario\\program\\Map.h",
               "RelativeDocumentMoniker": "program\\Map.h",
               "ToolTip": "F:\\\u30C1\u30FC\u30E0\u5236\u4F5C\\Super Mario\\program\\Map.h",
               "RelativeToolTip": "program\\Map.h",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAADwAAABIAAAAAAAAAA==",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAADkAAABQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-05-24T09:09:25.62Z",
               "IsPinned": true,
@@ -60,13 +64,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Map.cpp",
               "DocumentMoniker": "F:\\\u30C1\u30FC\u30E0\u5236\u4F5C\\Super Mario\\program\\Map.cpp",
               "RelativeDocumentMoniker": "program\\Map.cpp",
               "ToolTip": "F:\\\u30C1\u30FC\u30E0\u5236\u4F5C\\Super Mario\\program\\Map.cpp",
               "RelativeToolTip": "program\\Map.cpp",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAAAIIAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-05-24T09:09:43.89Z",
               "IsPinned": true,
@@ -74,13 +78,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "agaric.h",
               "DocumentMoniker": "F:\\\u30C1\u30FC\u30E0\u5236\u4F5C\\Super Mario\\program\\agaric.h",
               "RelativeDocumentMoniker": "program\\agaric.h",
               "ToolTip": "F:\\\u30C1\u30FC\u30E0\u5236\u4F5C\\Super Mario\\program\\agaric.h",
               "RelativeToolTip": "program\\agaric.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-06-07T09:39:00.064Z",
               "IsPinned": true,
@@ -88,45 +92,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
+              "Title": "Hit.cpp",
+              "DocumentMoniker": "F:\\\u30C1\u30FC\u30E0\u5236\u4F5C\\Super Mario\\program\\Hit.cpp",
+              "RelativeDocumentMoniker": "program\\Hit.cpp",
+              "ToolTip": "F:\\\u30C1\u30FC\u30E0\u5236\u4F5C\\Super Mario\\program\\Hit.cpp",
+              "RelativeToolTip": "program\\Hit.cpp",
+              "ViewState": "AgIAAJ8AAAAAAAAAAAAAAB4AAABcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-09T06:12:03.246Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "agaric.cpp",
               "DocumentMoniker": "F:\\\u30C1\u30FC\u30E0\u5236\u4F5C\\Super Mario\\program\\agaric.cpp",
               "RelativeDocumentMoniker": "program\\agaric.cpp",
               "ToolTip": "F:\\\u30C1\u30FC\u30E0\u5236\u4F5C\\Super Mario\\program\\agaric.cpp",
               "RelativeToolTip": "program\\agaric.cpp",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAA4AAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAADMAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-06-07T09:38:49.445Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
               "Title": "Player.h",
               "DocumentMoniker": "F:\\\u30C1\u30FC\u30E0\u5236\u4F5C\\Super Mario\\program\\Player.h",
               "RelativeDocumentMoniker": "program\\Player.h",
               "ToolTip": "F:\\\u30C1\u30FC\u30E0\u5236\u4F5C\\Super Mario\\program\\Player.h",
               "RelativeToolTip": "program\\Player.h",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAACUAAAA5AAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAADYAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-06-04T05:54:16.064Z"
+              "WhenOpened": "2025-06-04T05:54:16.064Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
               "Title": "Player.cpp",
               "DocumentMoniker": "F:\\\u30C1\u30FC\u30E0\u5236\u4F5C\\Super Mario\\program\\Player.cpp",
               "RelativeDocumentMoniker": "program\\Player.cpp",
               "ToolTip": "F:\\\u30C1\u30FC\u30E0\u5236\u4F5C\\Super Mario\\program\\Player.cpp",
               "RelativeToolTip": "program\\Player.cpp",
-              "ViewState": "AgIAADYAAAAAAAAAAAAAACwAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABcAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-06-04T05:54:07.389Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "Game.h",
               "DocumentMoniker": "F:\\\u30C1\u30FC\u30E0\u5236\u4F5C\\Super Mario\\program\\Game.h",
               "RelativeDocumentMoniker": "program\\Game.h",
@@ -134,18 +152,17 @@
               "RelativeToolTip": "program\\Game.h",
               "ViewState": "AgIAAAAAAAAAAAAAAADwvwMAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-24T08:44:14.499Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-24T08:44:14.499Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Game.cpp",
               "DocumentMoniker": "F:\\\u30C1\u30FC\u30E0\u5236\u4F5C\\Super Mario\\program\\Game.cpp",
               "RelativeDocumentMoniker": "program\\Game.cpp",
               "ToolTip": "F:\\\u30C1\u30FC\u30E0\u5236\u4F5C\\Super Mario\\program\\Game.cpp",
               "RelativeToolTip": "program\\Game.cpp",
-              "ViewState": "AgIAABAAAAAAAAAAAAApwCQAAAALAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAApwB0AAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-05-17T09:10:58.836Z",
               "EditorCaption": ""

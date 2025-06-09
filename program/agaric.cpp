@@ -48,9 +48,12 @@ void Agaric::Update(int pos_x, int pos_y, bool is_hit, int map_pos_x)
 		break;
 
 	case MODE_MOVE:
-		pos_.x +=speed;
-
+		pos_.x += speed;
 		
+		break;
+
+	case MODE_DISAPPEAR:
+
 		break;
 	}
 
@@ -60,7 +63,11 @@ void Agaric::Update(int pos_x, int pos_y, bool is_hit, int map_pos_x)
 //---------------------------------------------------------------------------------
 void Agaric::Render()
 {
-	DrawGraph(pos_.x, pos_.y, image_, TRUE);
+	if (mode_ != MODE_DISAPPEAR)
+	{
+		DrawGraph(pos_.x, pos_.y, image_, TRUE);
+	}
+
 	DrawFormatString(10, 40, GetColor(255, 255, 255), "speed:%f", speed);
 }
 //---------------------------------------------------------------------------------

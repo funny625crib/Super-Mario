@@ -8,6 +8,8 @@
 #include <sstream>
 using namespace std;
 
+
+
 //---------------------------------------------------------------------------------
 //	キリコとマップの当たり判定
 //---------------------------------------------------------------------------------
@@ -27,7 +29,7 @@ void Map::agaric_hit(Float2& agaric_pos, float& agaric_speed,int agaric_mode)
 	else if(agaric_mode == Agaric::MODE_MOVE)
 	{
 		//キリコは重力を受ける
-		agaric_pos.y += 5.0f;
+		agaric_pos.y += 10.0f;
 		
 	}
 
@@ -119,11 +121,20 @@ void Map::Init()
 //---------------------------------------------------------------------------------
 //	更新処理
 //---------------------------------------------------------------------------------
-void Map::Update(Float2& player_pos, bool& jump_mode, int jump_frame)
+void Map::Update(Float2& player_pos, bool& jump_mode, int jump_frame,int player_size)
 {
+	static int num;
+	if (player_size == Player::SIZE_SMALL)
+	{
+		num = 1;
+	}
+	else 
+	{
+		num = 2;
+	}
 
 	//プレイヤーが地面に触れると、落下しなくなります
-	if (map[((int)player_pos.y / GROUND_SIZE) + 1][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] != 0)    //地面
+	if (map[((int)player_pos.y / GROUND_SIZE) + num][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] != 0)    //地面
 	{
 		is_on_ground = true;
 	}

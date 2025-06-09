@@ -11,8 +11,23 @@ public:
 #define PLAYER_IMAGE_W 33
 #define PLAYER_IMAGE_H 34
 
+#define PLAYER_BIG_IMAGE_W 50
+#define PLAYER_BIG_IMAGE_H 68
+
+	
+
+
 //プレイヤーの移動スピード
 #define PLAYER_MOVE_SPEED    2.0f
+
+
+	//プレイヤー画像のサイズ
+int player_image_w;
+	int player_image_h;
+
+	//マリオの画像
+	int image_small;
+	int image_big;
 
 //描画する画面の座標
 	int image_x;
@@ -30,6 +45,15 @@ public:
 	};
 	int mode_;
 
+	//プレイヤーの大きさ
+	enum
+	{
+		SIZE_SMALL,
+		SIZE_BIG,
+		SIZE_SUPER,
+	};
+	int player_size;
+
 	//プレイヤーがジャンプしているかどうか
 	bool is_jump;
 	int jump_frame;
@@ -38,5 +62,6 @@ public:
 	void Update(bool& is_on_ground, bool is_wall_have, float& agaric_pos_x);	//	更新処理
 	void Render();	//	描画処理
 	void Exit();		//	終了処理
+	void agaric_eat(Float2& agaric_pos,int& agaric_mode);  //	プレイヤーとキリコの当たり判定
 
 };

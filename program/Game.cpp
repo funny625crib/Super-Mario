@@ -27,7 +27,7 @@ void GameInit()
 //---------------------------------------------------------------------------------
 void GameUpdate()
 {
-	map.Update(player.pos_, player.is_jump, player.jump_frame);
+	map.Update(player.pos_, player.is_jump, player.jump_frame,player.player_size);
 
 	player.Update(map.is_on_ground, map.is_wall_have, agaric.pos_.x);
 
@@ -36,6 +36,9 @@ void GameUpdate()
 
 	//	キリコとマップの当たり判定
 	map.agaric_hit(agaric.pos_, agaric.speed, agaric.mode_);
+
+	//プレイヤーとキリコの当たり判定
+	player.agaric_eat(agaric.pos_, agaric.mode_);
 }
 //---------------------------------------------------------------------------------
 //	描画処理

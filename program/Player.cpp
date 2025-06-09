@@ -2,7 +2,28 @@
 #include "map.h"
 #include "Game.h"
 #include "Main.h"
+#include "agaric.h"
+#include "Hit.h"
 
+//---------------------------------------------------------------------------------
+//	プレイヤーとキリコの当たり判定
+//---------------------------------------------------------------------------------
+void Player::agaric_eat(Float2& agaric_pos, int& agaric_mode)
+{
+	if (CheckBoxHit(pos_.x, pos_.y, PLAYER_IMAGE_W, PLAYER_IMAGE_H, agaric_pos.x, agaric_pos.y, AGARIC_IMAGE_SIZE, AGARIC_IMAGE_SIZE)
+		&& agaric_mode == Agaric::MODE_MOVE)
+	{
+		agaric_mode = Agaric::MODE_DISAPPEAR;
+
+		//マリオの画像は大きくなる
+		player_image_h = PLAYER_BIG_IMAGE_H;
+		player_image_w = PLAYER_BIG_IMAGE_W;
+		image_ = image_big;
+		image_x = 0;
+		player_size = SIZE_BIG;
+		
+	}
+}
 
 //---------------------------------------------------------------------------------
 //	初期化処理
@@ -10,7 +31,8 @@
 void Player::Init()
 {
 	//プレイヤーの画像の初期化
-	image_ = LoadGraph("data/player/Mario.png");
+	image_small = LoadGraph("data/player/Mario.png");
+	image_big = LoadGraph("data/player/Mario_big.png");
 
 	//プレイヤーの画像は最初は反転しなかった
 	is_overturn = false;
@@ -21,12 +43,18 @@ void Player::Init()
 	//最初はジャンプしていない
 	is_jump = false;
 	jump_frame = 0;
+
+	//最初は小さいマリオ
+	player_image_h = PLAYER_IMAGE_H;
+	player_image_w = PLAYER_IMAGE_W;
+	image_ = image_small;
+	player_size = SIZE_SMALL;
 }
 
 //---------------------------------------------------------------------------------
 //	更新処理
 //---------------------------------------------------------------------------------
-void Player::Update(bool& is_on_ground, bool is_wall_have,float& agaric_pos_x)
+void Player::Update(bool& is_on_ground, bool is_wall_have, float& agaric_pos_x)
 {
 
 	//フレーム
@@ -66,7 +94,7 @@ void Player::Update(bool& is_on_ground, bool is_wall_have,float& agaric_pos_x)
 		}
 
 		//ジャンプの画像に変える
-		image_x = 5 * PLAYER_IMAGE_W;
+		image_x = 5 * player_image_w;
 	}
 
 
@@ -96,15 +124,19 @@ void Player::Update(bool& is_on_ground, bool is_wall_have,float& agaric_pos_x)
 		break;
 	case MODE_MOVE:
 		//プレイヤーの移動に伴って画像が変化する
-		player_frame++;
-		if (player_frame % 10 == 0)
+		if (is_jump == false)
 		{
-			image_x += PLAYER_IMAGE_W;
-			if (image_x >= 4 * PLAYER_IMAGE_W)
+			player_frame++;
+			if (player_frame % 10 == 0)
 			{
-				image_x = 0;
+				image_x += player_image_w;
+				if (image_x >= 4 * player_image_w)
+				{
+					image_x = 0;
+				}
 			}
 		}
+
 		break;
 
 	}
@@ -115,7 +147,7 @@ void Player::Update(bool& is_on_ground, bool is_wall_have,float& agaric_pos_x)
 //---------------------------------------------------------------------------------
 void Player::Render()
 {
-	DrawRectGraphF(pos_.x, pos_.y, image_x, image_y, PLAYER_IMAGE_W, PLAYER_IMAGE_H, image_, TRUE, is_overturn);
+	DrawRectGraphF(pos_.x, pos_.y, image_x, image_y, player_image_w, player_image_h, image_, TRUE, is_overturn);
 }
 //---------------------------------------------------------------------------------
 //	終了処理
@@ -123,4 +155,6 @@ void Player::Render()
 void Player::Exit()
 {
 	DeleteGraph(image_);
+	DeleteGraph(image_small);
+	DeleteGraph(image_big);
 }
