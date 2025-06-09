@@ -22,4 +22,6 @@ public:
 	};
 	int mode_;
 
+	//キノコの移動スピード
+	float speed;
 };

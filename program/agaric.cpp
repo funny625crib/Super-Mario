@@ -12,6 +12,7 @@ void Agaric::Init()
 	image_ = LoadGraph("data/map/agaric.png");   //キリコ画像を初期化する
 	pos_ = { 20 * GROUND_SIZE,8 * GROUND_SIZE };  //座標を初期化する
 	mode_ = MODE_WAIT;                            //キノコのモードを初期化する
+	speed = 1.0f;
 }
 //---------------------------------------------------------------------------------
 //	更新処理
@@ -47,17 +48,9 @@ void Agaric::Update(int pos_x, int pos_y, bool is_hit, int map_pos_x)
 		break;
 
 	case MODE_MOVE:
-		pos_.x ++;
-		if (pos_.x > (float)(pos_x + 4 * GROUND_SIZE))
-		{
-			pos_.x--;
-			pos_.y+=2.0f;
-		}
-		if (pos_.y >= (float)(pos_y + 3 * GROUND_SIZE))
-		{
-			pos_.y = (float)(pos_y + 3 * GROUND_SIZE);
-			pos_.x++;
-		}
+		pos_.x +=speed;
+
+		
 		break;
 	}
 
@@ -68,6 +61,7 @@ void Agaric::Update(int pos_x, int pos_y, bool is_hit, int map_pos_x)
 void Agaric::Render()
 {
 	DrawGraph(pos_.x, pos_.y, image_, TRUE);
+	DrawFormatString(10, 40, GetColor(255, 255, 255), "speed:%f", speed);
 }
 //---------------------------------------------------------------------------------
 //	終了処理
