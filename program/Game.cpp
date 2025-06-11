@@ -13,6 +13,7 @@ Player player;
 Goomba  goomba[10];
 Agaric agaric;   //ƒLƒŠƒR
 int index = 0;
+int ind[10];
 //---------------------------------------------------------------------------------
 //	‰Šú‰»ˆ—
 //---------------------------------------------------------------------------------
@@ -23,13 +24,11 @@ void GameInit()
 	agaric.Init();
 
 
+
+
 	for (int h = 0; h < MAP_H; ++h) {
 		for (int w = 0; w < MAP_W; ++w) {
-			goomba[index].map_data[h][w] = map.map[h][w];
-			if (map.map[h][w] == 5) {
-				goomba[0].map_pos_x = w*35;
-				goomba[0].map_pos_y = h*35;
-			}
+
 			if (map.map[h][w] == 9) {
 
 				goomba[index].first_pos_x = w;
@@ -41,7 +40,24 @@ void GameInit()
 	}
 
 	for (int i = 0; i < index; ++i) {
+		for (int h = 0; h < MAP_H; ++h) {
+			for (int w = 0; w < MAP_W; ++w) {
+				if (map.map[h][w] == 5) {
+					goomba[i].map_pos_x_pipe[ind[i]] = w * 35;
+					goomba[i].map_pos_y_pipe[ind[i]] = h * 35;
+					ind[i]++;
+				}
+				if (map.map[h][w] == 1) {
+					goomba[i].map_pos_x_ground[goomba[i].index_ground] = w * 35;
+					goomba[i].map_pos_y_ground[goomba[i].index_ground] = h * 35;
+
+					goomba[i].index_ground++;
+
+				}
+			}
+		}
 		goomba[i].Init(map.map[goomba[i].first_pos_y][goomba[i].first_pos_x], goomba[i].first_pos_y, goomba[i].first_pos_x);
+		//ind[i] = 0;
 	}
 
 }
@@ -56,7 +72,32 @@ void GameUpdate()
 
 	agaric.Update(map.image_x[8][20], map.image_y[8][20], map.agaric_is_hit, map.pos_.x);
 	for (int i = 0; i < index; ++i) {
-		goomba[i].Update(player.pos_, PLAYER_IMAGE_W / 2, CheckHitKey(KEY_INPUT_D) && player.pos_.x >= SCREEN_W / 2,map.is_on_ground, map.pos_);
+		goomba[i].Update(player.pos_, PLAYER_IMAGE_W / 2, CheckHitKey(KEY_INPUT_D) && player.pos_.x >= SCREEN_W / 2, map.is_on_ground, map.pos_, player.enemy_hit);
+		for (int a = 0; a < ind[i]; ++a) {
+			if (CheckCircleBoxHit(goomba[i].Pos_.x, goomba[i].Pos_.y, 35, goomba[i].map_pos_x_pipe[a] + map.pos_.x, goomba[i].map_pos_y_pipe[a], 35, 35)) {
+				if (goomba[i].map_pos_x_pipe[a] + map.pos_.x < goomba[i].Pos_.x && goomba[i].Pos_.x < goomba[i].map_pos_x_pipe[a] + map.pos_.x + 35) {
+					float dis = (goomba[i].map_pos_x_pipe[a] + map.pos_.x) - goomba[i].Pos_.x;
+					float dis2 = (goomba[i].map_pos_x_pipe[a] + map.pos_.x + 35) - goomba[i].Pos_.x;
+					if (dis > dis2) {
+						goomba[i].Pos_.x = goomba[i].map_pos_x_pipe[a] + map.pos_.x + 35 + 5;
+					}
+					else {
+						goomba[i].Pos_.x = goomba[i].map_pos_x_pipe[a] + map.pos_.x - 5;
+					}
+
+				}
+				goomba[i].move_ *= -1;
+
+			}
+
+		}
+		for (int a = 0; a < goomba[i].index_ground; ++a) {
+			if (CheckCircleBoxHit(goomba[i].Pos_.x, goomba[i].Pos_.y, 35, goomba[i].map_pos_x_ground[a] + map.pos_.x, goomba[i].map_pos_y_ground[a], 35, 35)) {
+
+				goomba[i].Pos_.y = goomba[i].map_pos_y_ground[a] - 35 / 2 - 1;
+			}
+		}
+		goomba[i].Pos_.y += 0.1f;
 	}
 }
 //---------------------------------------------------------------------------------
@@ -70,13 +111,11 @@ void GameRender()
 	player.Render();
 	for (int i = 0; i < index; ++i) {
 		goomba[i].Render();
-		//if (map.is_on_ground == true) {
-		//	DrawFormatString(300, 20 * i, GetColor(255, 255, 255), "%d", goomba[i].goomba_x);
-			//DrawFormatString(40, 20 * i, GetColor(255, 255, 255), "%d", goomba[i].goomba_y);
-		//if (goomba[i].check_display_on_ == true) {
-			DrawFormatString(300, 20 * i, GetColor(255, 255, 255), "%d", goomba[0].map_pos_x);
-	//	}
-		//}
+		//DrawLineBox(goomba[i].Pos_.x- PLAYER_IMAGE_W / 2, goomba[i].Pos_.y- PLAYER_IMAGE_W / 2, goomba[i].Pos_.x+35- PLAYER_IMAGE_W / 2, goomba[i].Pos_.y + 35- PLAYER_IMAGE_W / 2, GetColor(0, 255, 255), 5);
+			//DrawFormatString(300, 20 * i, GetColor(255, 255, 255), "%f", (goomba[0].map_pos_x_pipe[i] + map.pos_.x));
+			//for (int a = 0; a < ind[i]; ++a) {
+		//		DrawLineBox(goomba[i].map_pos_x_pipe[a] + map.pos_.x, goomba[i].map_pos_y_pipe[a], goomba[i].map_pos_x_pipe[a] + map.pos_.x +35 , goomba[i].map_pos_y_pipe[a]+ 35, GetColor(0, 255, 255),5);
+			//}
 	}
 
 	/*DrawFormatString(300, 300, GetColor(255, 255, 255), "%d",(int)( player.pos_.x - map.pos_.x )/35);
