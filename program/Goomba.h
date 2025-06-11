@@ -2,7 +2,7 @@
 #include "Float2.h"
 #include "Enemys.h"
 #include "Map.h"
-
+//ƒNƒŠƒ{[
 const int GOOMBA_MAX = 15;
 	class Goomba :public __Enenys::_Enemys {
 

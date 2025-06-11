@@ -6,11 +6,8 @@
 #include "Goomba.h"
 __Enenys::_Enemys _Goomba;
 
-//void Goomba::Set_Pos(int h, int w)
-//{
-//	Pos_.Set((float)h, (float)w);
 //}
-
+	//ƒNƒŠƒ{[
 void Goomba::Init(int map, int h, int w)
 {
 

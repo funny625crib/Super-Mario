@@ -71,6 +71,7 @@ void GameUpdate()
 	player.Update(map.is_on_ground, map.is_wall_have, agaric.pos_.x);
 
 	agaric.Update(map.image_x[8][20], map.image_y[8][20], map.agaric_is_hit, map.pos_.x);
+	//ÉNÉäÉ{Å[
 	for (int i = 0; i < index; ++i) {
 		goomba[i].Update(player.pos_, PLAYER_IMAGE_W / 2, CheckHitKey(KEY_INPUT_D) && player.pos_.x >= SCREEN_W / 2, map.is_on_ground, map.pos_, player.enemy_hit);
 		for (int a = 0; a < ind[i]; ++a) {
