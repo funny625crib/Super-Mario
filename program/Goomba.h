@@ -16,8 +16,8 @@ const int GOOMBA_MAX = 15;
 		bool hit_player=false;
 		int count_enemy_num=0;
 		int map_data[MAP_H][MAP_W];
-		void Init();
-		void Update(Float2& player_pos,float player_r, float map_move);
+		void Init(int map,int h, int w);
+		void Update(Float2& player_pos,float player_r, bool map_move_check);
 		void Render(int& map, int h, int w);
 		void Exit();
 

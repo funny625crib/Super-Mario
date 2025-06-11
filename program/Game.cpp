@@ -21,7 +21,13 @@ void GameInit()
 	map.Init();
 	player.Init();
 	agaric.Init();
-	goomba.Init();
+	for (int h = 0; h < MAP_H; ++h) {
+		for (int w = 0; w < MAP_W; ++w) {
+			
+				goomba.Init(map.map[10][20],1, 1);
+		
+		}
+	}
 }
 //---------------------------------------------------------------------------------
 //	更新処理
@@ -34,7 +40,7 @@ void GameUpdate()
 
 	agaric.Update(map.image_x[8][20], map.image_y[8][20],map.agaric_is_hit,map.pos_.x);
 	
-	goomba.Update(player.pos_, PLAYER_IMAGE_W/2, map.pos_.x);
+	goomba.Update(player.pos_, PLAYER_IMAGE_W/2, CheckHitKey(KEY_INPUT_D) && player.pos_.x >= SCREEN_W / 2);
 }
 //---------------------------------------------------------------------------------
 //	描画処理
@@ -45,7 +51,7 @@ void GameRender()
 	agaric.Render();
 	map.Render();
 	player.Render();
-	goomba.Render(map.image_x[10][20],5,10);
+	goomba.Render(map.image_x[10][20],30,30);
 
 	//確認用
 	DrawFormatString(10 + 20, 10, GetColor(255, 255, 255), "%d", ((int)player.pos_.y / GROUND_SIZE));
