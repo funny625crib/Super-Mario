@@ -17,7 +17,7 @@ void Agaric::Init()
 //---------------------------------------------------------------------------------
 //	更新処理
 //---------------------------------------------------------------------------------
-void Agaric::Update(int pos_x, int pos_y, bool is_hit, int map_pos_x)
+void Agaric::Update(int pos_x, int pos_y, bool is_hit, float map_pos_x)
 {
 
 
@@ -28,7 +28,7 @@ void Agaric::Update(int pos_x, int pos_y, bool is_hit, int map_pos_x)
 			//キノコと箱の座標が同じ
 		if (is_hit == false)
 		{
-			pos_.x = (float)(pos_x);
+			pos_.x = (float)(pos_x)-map_pos_x;
 			pos_.y = (float)(pos_y);
 		}
 		else
@@ -42,15 +42,18 @@ void Agaric::Update(int pos_x, int pos_y, bool is_hit, int map_pos_x)
 		if (pos_.y < (float)(pos_y - GROUND_SIZE))
 		{
 			pos_.y = (float)(pos_y - GROUND_SIZE);
-			pos_.x = (float)(pos_x);
+			pos_.x = (float)(pos_x)-map_pos_x;
 			mode_ = MODE_MOVE;
 		}
 		break;
 
 	case MODE_MOVE:
-		pos_.x +=speed;
-
+		pos_.x += speed;
 		
+		break;
+
+	case MODE_DISAPPEAR:
+
 		break;
 	}
 
@@ -58,9 +61,14 @@ void Agaric::Update(int pos_x, int pos_y, bool is_hit, int map_pos_x)
 //---------------------------------------------------------------------------------
 //	描画処理
 //---------------------------------------------------------------------------------
-void Agaric::Render()
+void Agaric::Render(Float2 map_pos)
 {
-	DrawGraph(pos_.x, pos_.y, image_, TRUE);
+	if (mode_ != MODE_DISAPPEAR&&mode_!=MODE_WAIT)
+	{
+		//キリコとプレイヤーは相対的に静止したまま
+		DrawGraphF(pos_.x+map_pos.x, pos_.y, image_, TRUE);
+	}
+
 	DrawFormatString(10, 40, GetColor(255, 255, 255), "speed:%f", speed);
 }
 //---------------------------------------------------------------------------------

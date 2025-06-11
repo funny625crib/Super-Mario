@@ -8,35 +8,139 @@
 #include <sstream>
 using namespace std;
 
+
+
 //---------------------------------------------------------------------------------
 //	キリコとマップの当たり判定
 //---------------------------------------------------------------------------------
-void Map::agaric_hit(Float2& agaric_pos, float& agaric_speed,int agaric_mode)
+void Map::Agaric_hit(Float2& agaric_pos, float& agaric_speed,int agaric_mode)
 {
 	//キリコの右は壁なら,左に行きます
-	if (map[((int)agaric_pos.y / GROUND_SIZE)][((int)(agaric_pos.x - pos_.x) / GROUND_SIZE)] == 5&& agaric_mode == Agaric::MODE_MOVE)
+	if (map[((int)agaric_pos.y / GROUND_SIZE)][((int)(agaric_pos.x ) / GROUND_SIZE)] == 5&& agaric_mode == Agaric::MODE_MOVE)
 	{
 		agaric_speed = -agaric_speed;
 	}
 
 	//キリコが地面に触れると、落下しなくなります
-	if (map[((int)agaric_pos.y / GROUND_SIZE) + 1][((int)(agaric_pos.x - pos_.x) / GROUND_SIZE)] != 0)    //地面
+	if (map[((int)agaric_pos.y / GROUND_SIZE) + 1][((int)(agaric_pos.x ) / GROUND_SIZE)] != 0)    //地面
 	{
 
 	}
 	else if(agaric_mode == Agaric::MODE_MOVE)
 	{
 		//キリコは重力を受ける
-		agaric_pos.y += 5.0f;
+		agaric_pos.y += 10.0f;
 		
 	}
 
 }
 
+
+
 //---------------------------------------------------------------------------------
 //	プレイヤーとマップの当たり判定
 //---------------------------------------------------------------------------------
+void Map::Player_hit(Float2& player_pos, bool& jump_mode, int jump_frame, int player_size)
+{
+	static int num;
+	if (player_size == Player::SIZE_SMALL)
+	{
+		num = 1;
+	}
+	else
+	{
+		num = 2;
+	}
 
+	//プレイヤーが地面に触れると、落下しなくなります
+	if (map[((int)player_pos.y / GROUND_SIZE) + num][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] != 0)    //地面
+	{
+		is_on_ground = true;
+	}
+	else
+	{
+		//プレイヤーは重力を受ける
+		player_pos.y += 5.0f;
+		is_on_ground = false;
+
+		if (jump_frame > 20)
+		{
+			jump_mode = false;
+		}
+
+	}
+
+	//壁にぶつかると前に進めない
+	if (map[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x - pos_.x) / GROUND_SIZE) + 1] != 0
+		|| map[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x - pos_.x) / GROUND_SIZE) - 1] != 0)   //壁
+	{
+		is_wall_have = true;
+	}
+	else
+	{
+		is_wall_have = false;
+	}
+
+	//壁にぶつかると上に進めない
+	if (map[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] != 0)
+	{
+		jump_mode = false;
+	}
+
+	//壁にぶつかると壁は上に進める
+	if (map[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] == 4)
+	{
+		is_hit = true;
+		wall_x = ((int)player_pos.y / GROUND_SIZE);
+		wall_y = ((int)(player_pos.x - pos_.x) / GROUND_SIZE);
+	}
+	else if (map[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] == 3)   //箱に当たったら
+	{
+		is_hit = true;
+		wall_x = ((int)player_pos.y / GROUND_SIZE);
+		wall_y = ((int)(player_pos.x - pos_.x) / GROUND_SIZE);
+		box_image_x[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] = 3 * GROUND_SIZE;
+
+		//キノコが含む箱に当たったら
+		if (((int)player_pos.y / GROUND_SIZE) == 8 && ((int)(player_pos.x - pos_.x) / GROUND_SIZE) == 20)
+		{
+			agaric_is_hit = true;
+		}
+	}
+
+	
+	if (is_hit == true)
+	{
+		//壁の移動スピード
+		static float speed = 5.0f;
+		speed--;
+		image_y[wall_x][wall_y] -= speed;
+		if (speed <= -4.0f)
+		{
+			is_hit = false;
+			speed = 5.0f;
+		}
+	}
+
+	//プレイヤーの移動に伴って地図も移動する(プレイヤーの位置が地図の真ん中にある場合)
+	if (CheckHitKey(KEY_INPUT_D) && player_pos.x >= SCREEN_W / 2)
+	{
+		pos_.x -= 3.0f;   //プレイヤーの移動距離を記録する
+		for (int h = 0; h < MAP_H; ++h)
+		{
+			for (int w = 0; w < MAP_W; ++w)
+			{
+				image_x[h][w] -= 3;
+
+			}
+		}
+	}
+
+	if (pos_.x < -IMAGE_W + SCREEN_W)
+	{
+		pos_.x = -IMAGE_W + SCREEN_W;
+	}
+}
 
 
 //---------------------------------------------------------------------------------
@@ -119,95 +223,9 @@ void Map::Init()
 //---------------------------------------------------------------------------------
 //	更新処理
 //---------------------------------------------------------------------------------
-void Map::Update(Float2& player_pos, bool& jump_mode, int jump_frame)
+void Map::Update()
 {
-
-	//プレイヤーが地面に触れると、落下しなくなります
-	if (map[((int)player_pos.y / GROUND_SIZE) + 1][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] != 0)    //地面
-	{
-		is_on_ground = true;
-	}
-	else
-	{
-		//プレイヤーは重力を受ける
-		player_pos.y += 5.0f;
-		is_on_ground = false;
-
-		if (jump_frame > 20)
-		{
-			jump_mode = false;
-		}
-
-	}
-
-	//壁にぶつかると前に進めない
-	if (map[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x - pos_.x) / GROUND_SIZE) + 1] != 0
-		|| map[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x - pos_.x) / GROUND_SIZE) - 1] != 0)   //壁
-	{
-		is_wall_have = true;
-	}
-	else
-	{
-		is_wall_have = false;
-	}
-
-	//壁にぶつかると上に進めない
-	if (map[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] != 0)
-	{
-		jump_mode = false;
-	}
-
-	//壁にぶつかると壁は上に進める
-	if (map[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] == 4)
-	{
-		is_hit = true;
-		wall_x = ((int)player_pos.y / GROUND_SIZE);
-		wall_y = ((int)(player_pos.x - pos_.x) / GROUND_SIZE);
-	}
-	else if (map[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] == 3)   //箱に当たったら
-	{
-		is_hit = true;
-		wall_x = ((int)player_pos.y / GROUND_SIZE);
-		wall_y = ((int)(player_pos.x - pos_.x) / GROUND_SIZE);
-		box_image_x[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] = 3 * GROUND_SIZE;
-
-		//キノコが含む箱に当たったら
-		if (((int)player_pos.y / GROUND_SIZE) == 8 && ((int)(player_pos.x - pos_.x) / GROUND_SIZE) == 20)
-		{
-			agaric_is_hit = true;
-		}
-	}
-
-	if (is_hit == true)
-	{
-		static int speed = 5.0f;
-		speed--;
-		image_y[wall_x][wall_y] -= speed;
-		if (speed <= -4.0f)
-		{
-			is_hit = false;
-			speed = 5.0f;
-		}
-	}
-
-	//プレイヤーの移動に伴って地図も移動する(プレイヤーの位置が地図の真ん中にある場合)
-	if (CheckHitKey(KEY_INPUT_D) && player_pos.x >= SCREEN_W / 2)
-	{
-		pos_.x -= 3.0f;   //プレイヤーの移動距離を記録する
-		for (int h = 0; h < MAP_H; ++h)
-		{
-			for (int w = 0; w < MAP_W; ++w)
-			{
-				image_x[h][w] -= 3;
-
-			}
-		}
-	}
-
-	if (pos_.x < -IMAGE_W + SCREEN_W)
-	{
-		pos_.x = -IMAGE_W + SCREEN_W;
-	}
+	
 
 
 	//箱のアニメーション

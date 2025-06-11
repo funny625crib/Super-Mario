@@ -7,6 +7,518 @@
         {
           "ruleId": "C26495",
           "message": {
+            "text": "変数 'Map::is_wall_have' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "analysisTarget": {
+            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///F:/チーム制作/Super Mario/program/Map.h"
+                },
+                "region": {
+                  "startLine": 70,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Map::{ctor}",
+                  "decoratedName": "??0Map@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Map::is_wall_have"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'Map::is_on_ground' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "analysisTarget": {
+            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///F:/チーム制作/Super Mario/program/Map.h"
+                },
+                "region": {
+                  "startLine": 70,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Map::{ctor}",
+                  "decoratedName": "??0Map@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Map::is_on_ground"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'Map::box_image_x' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "analysisTarget": {
+            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///F:/チーム制作/Super Mario/program/Map.h"
+                },
+                "region": {
+                  "startLine": 70,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Map::{ctor}",
+                  "decoratedName": "??0Map@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Map::box_image_x"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'Map::data_count_w' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "analysisTarget": {
+            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///F:/チーム制作/Super Mario/program/Map.h"
+                },
+                "region": {
+                  "startLine": 70,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Map::{ctor}",
+                  "decoratedName": "??0Map@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Map::data_count_w"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'Map::Coin_image_' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "analysisTarget": {
+            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///F:/チーム制作/Super Mario/program/Map.h"
+                },
+                "region": {
+                  "startLine": 70,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Map::{ctor}",
+                  "decoratedName": "??0Map@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Map::Coin_image_"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'Map::is_hit' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "analysisTarget": {
+            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///F:/チーム制作/Super Mario/program/Map.h"
+                },
+                "region": {
+                  "startLine": 70,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Map::{ctor}",
+                  "decoratedName": "??0Map@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Map::is_hit"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'Map::Ground_image_' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "analysisTarget": {
+            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///F:/チーム制作/Super Mario/program/Map.h"
+                },
+                "region": {
+                  "startLine": 70,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Map::{ctor}",
+                  "decoratedName": "??0Map@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Map::Ground_image_"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'Map::wall_x' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "analysisTarget": {
+            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///F:/チーム制作/Super Mario/program/Map.h"
+                },
+                "region": {
+                  "startLine": 70,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Map::{ctor}",
+                  "decoratedName": "??0Map@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Map::wall_x"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'Map::Box_image_' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "analysisTarget": {
+            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///F:/チーム制作/Super Mario/program/Map.h"
+                },
+                "region": {
+                  "startLine": 70,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Map::{ctor}",
+                  "decoratedName": "??0Map@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Map::Box_image_"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'Map::Wall_image_' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "analysisTarget": {
+            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///F:/チーム制作/Super Mario/program/Map.h"
+                },
+                "region": {
+                  "startLine": 70,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Map::{ctor}",
+                  "decoratedName": "??0Map@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Map::Wall_image_"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'Map::agaric_is_hit' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "analysisTarget": {
+            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///F:/チーム制作/Super Mario/program/Map.h"
+                },
+                "region": {
+                  "startLine": 70,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Map::{ctor}",
+                  "decoratedName": "??0Map@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Map::agaric_is_hit"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'Map::wall_y' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "analysisTarget": {
+            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///F:/チーム制作/Super Mario/program/Map.h"
+                },
+                "region": {
+                  "startLine": 70,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Map::{ctor}",
+                  "decoratedName": "??0Map@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Map::wall_y"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'Map::box_image_y' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "analysisTarget": {
+            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///F:/チーム制作/Super Mario/program/Map.h"
+                },
+                "region": {
+                  "startLine": 70,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Map::{ctor}",
+                  "decoratedName": "??0Map@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Map::box_image_y"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'Map::data_count_h' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "analysisTarget": {
+            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///F:/チーム制作/Super Mario/program/Map.h"
+                },
+                "region": {
+                  "startLine": 70,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Map::{ctor}",
+                  "decoratedName": "??0Map@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Map::data_count_h"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'Map::map' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "analysisTarget": {
+            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///F:/チーム制作/Super Mario/program/Map.h"
+                },
+                "region": {
+                  "startLine": 70,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Map::{ctor}",
+                  "decoratedName": "??0Map@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Map::map"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'Map::image_x' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "analysisTarget": {
+            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///F:/チーム制作/Super Mario/program/Map.h"
+                },
+                "region": {
+                  "startLine": 70,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Map::{ctor}",
+                  "decoratedName": "??0Map@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Map::image_x"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
             "text": "変数 'Map::Ground1_image_' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
           },
           "analysisTarget": {
@@ -19,7 +531,7 @@
                   "uri": "file:///F:/チーム制作/Super Mario/program/Map.h"
                 },
                 "region": {
-                  "startLine": 49,
+                  "startLine": 70,
                   "startColumn": 1
                 }
               },
@@ -51,7 +563,7 @@
                   "uri": "file:///F:/チーム制作/Super Mario/program/Map.h"
                 },
                 "region": {
-                  "startLine": 49,
+                  "startLine": 70,
                   "startColumn": 1
                 }
               },
@@ -71,230 +583,6 @@
         {
           "ruleId": "C26495",
           "message": {
-            "text": "変数 'Map::Coin_image_' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
-          },
-          "analysisTarget": {
-            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "file:///F:/チーム制作/Super Mario/program/Map.h"
-                },
-                "region": {
-                  "startLine": 49,
-                  "startColumn": 1
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "Map::{ctor}",
-                  "decoratedName": "??0Map@@QEAA@XZ",
-                  "kind": "function"
-                }
-              ]
-            }
-          ],
-          "properties": {
-            "targetSymbol": "Map::Coin_image_"
-          }
-        },
-        {
-          "ruleId": "C26495",
-          "message": {
-            "text": "変数 'Map::data_count_w' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
-          },
-          "analysisTarget": {
-            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "file:///F:/チーム制作/Super Mario/program/Map.h"
-                },
-                "region": {
-                  "startLine": 49,
-                  "startColumn": 1
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "Map::{ctor}",
-                  "decoratedName": "??0Map@@QEAA@XZ",
-                  "kind": "function"
-                }
-              ]
-            }
-          ],
-          "properties": {
-            "targetSymbol": "Map::data_count_w"
-          }
-        },
-        {
-          "ruleId": "C26495",
-          "message": {
-            "text": "変数 'Map::map' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
-          },
-          "analysisTarget": {
-            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "file:///F:/チーム制作/Super Mario/program/Map.h"
-                },
-                "region": {
-                  "startLine": 49,
-                  "startColumn": 1
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "Map::{ctor}",
-                  "decoratedName": "??0Map@@QEAA@XZ",
-                  "kind": "function"
-                }
-              ]
-            }
-          ],
-          "properties": {
-            "targetSymbol": "Map::map"
-          }
-        },
-        {
-          "ruleId": "C26495",
-          "message": {
-            "text": "変数 'Map::Box_image_' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
-          },
-          "analysisTarget": {
-            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "file:///F:/チーム制作/Super Mario/program/Map.h"
-                },
-                "region": {
-                  "startLine": 49,
-                  "startColumn": 1
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "Map::{ctor}",
-                  "decoratedName": "??0Map@@QEAA@XZ",
-                  "kind": "function"
-                }
-              ]
-            }
-          ],
-          "properties": {
-            "targetSymbol": "Map::Box_image_"
-          }
-        },
-        {
-          "ruleId": "C26495",
-          "message": {
-            "text": "変数 'Map::Ground_image_' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
-          },
-          "analysisTarget": {
-            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "file:///F:/チーム制作/Super Mario/program/Map.h"
-                },
-                "region": {
-                  "startLine": 49,
-                  "startColumn": 1
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "Map::{ctor}",
-                  "decoratedName": "??0Map@@QEAA@XZ",
-                  "kind": "function"
-                }
-              ]
-            }
-          ],
-          "properties": {
-            "targetSymbol": "Map::Ground_image_"
-          }
-        },
-        {
-          "ruleId": "C26495",
-          "message": {
-            "text": "変数 'Map::data_count_h' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
-          },
-          "analysisTarget": {
-            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "file:///F:/チーム制作/Super Mario/program/Map.h"
-                },
-                "region": {
-                  "startLine": 49,
-                  "startColumn": 1
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "Map::{ctor}",
-                  "decoratedName": "??0Map@@QEAA@XZ",
-                  "kind": "function"
-                }
-              ]
-            }
-          ],
-          "properties": {
-            "targetSymbol": "Map::data_count_h"
-          }
-        },
-        {
-          "ruleId": "C26495",
-          "message": {
-            "text": "変数 'Map::image_x' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
-          },
-          "analysisTarget": {
-            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "file:///F:/チーム制作/Super Mario/program/Map.h"
-                },
-                "region": {
-                  "startLine": 49,
-                  "startColumn": 1
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "Map::{ctor}",
-                  "decoratedName": "??0Map@@QEAA@XZ",
-                  "kind": "function"
-                }
-              ]
-            }
-          ],
-          "properties": {
-            "targetSymbol": "Map::image_x"
-          }
-        },
-        {
-          "ruleId": "C26495",
-          "message": {
             "text": "変数 'Map::image_y' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
           },
           "analysisTarget": {
@@ -307,7 +595,7 @@
                   "uri": "file:///F:/チーム制作/Super Mario/program/Map.h"
                 },
                 "region": {
-                  "startLine": 49,
+                  "startLine": 70,
                   "startColumn": 1
                 }
               },
@@ -327,39 +615,7 @@
         {
           "ruleId": "C26495",
           "message": {
-            "text": "変数 'Map::Wall_image_' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
-          },
-          "analysisTarget": {
-            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "file:///F:/チーム制作/Super Mario/program/Map.h"
-                },
-                "region": {
-                  "startLine": 49,
-                  "startColumn": 1
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "Map::{ctor}",
-                  "decoratedName": "??0Map@@QEAA@XZ",
-                  "kind": "function"
-                }
-              ]
-            }
-          ],
-          "properties": {
-            "targetSymbol": "Map::Wall_image_"
-          }
-        },
-        {
-          "ruleId": "C26495",
-          "message": {
-            "text": "変数 'Player::image_y' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+            "text": "変数 'Player::image_big' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
           },
           "analysisTarget": {
             "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
@@ -371,7 +627,7 @@
                   "uri": "file:///F:/チーム制作/Super Mario/program/player.h"
                 },
                 "region": {
-                  "startLine": 42,
+                  "startLine": 67,
                   "startColumn": 1
                 }
               },
@@ -385,39 +641,7 @@
             }
           ],
           "properties": {
-            "targetSymbol": "Player::image_y"
-          }
-        },
-        {
-          "ruleId": "C26495",
-          "message": {
-            "text": "変数 'Player::image_x' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
-          },
-          "analysisTarget": {
-            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "file:///F:/チーム制作/Super Mario/program/player.h"
-                },
-                "region": {
-                  "startLine": 42,
-                  "startColumn": 1
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "Player::{ctor}",
-                  "decoratedName": "??0Player@@QEAA@XZ",
-                  "kind": "function"
-                }
-              ]
-            }
-          ],
-          "properties": {
-            "targetSymbol": "Player::image_x"
+            "targetSymbol": "Player::image_big"
           }
         },
         {
@@ -435,7 +659,7 @@
                   "uri": "file:///F:/チーム制作/Super Mario/program/player.h"
                 },
                 "region": {
-                  "startLine": 42,
+                  "startLine": 67,
                   "startColumn": 1
                 }
               },
@@ -455,7 +679,7 @@
         {
           "ruleId": "C26495",
           "message": {
-            "text": "変数 'Player::mode_' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+            "text": "変数 'Player::image_small' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
           },
           "analysisTarget": {
             "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
@@ -467,7 +691,7 @@
                   "uri": "file:///F:/チーム制作/Super Mario/program/player.h"
                 },
                 "region": {
-                  "startLine": 42,
+                  "startLine": 67,
                   "startColumn": 1
                 }
               },
@@ -481,7 +705,135 @@
             }
           ],
           "properties": {
-            "targetSymbol": "Player::mode_"
+            "targetSymbol": "Player::image_small"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'Player::player_size' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "analysisTarget": {
+            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///F:/チーム制作/Super Mario/program/player.h"
+                },
+                "region": {
+                  "startLine": 67,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Player::{ctor}",
+                  "decoratedName": "??0Player@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Player::player_size"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'Player::image_y' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "analysisTarget": {
+            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///F:/チーム制作/Super Mario/program/player.h"
+                },
+                "region": {
+                  "startLine": 67,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Player::{ctor}",
+                  "decoratedName": "??0Player@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Player::image_y"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'Player::player_image_w' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "analysisTarget": {
+            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///F:/チーム制作/Super Mario/program/player.h"
+                },
+                "region": {
+                  "startLine": 67,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Player::{ctor}",
+                  "decoratedName": "??0Player@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Player::player_image_w"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'Player::player_image_h' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "analysisTarget": {
+            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///F:/チーム制作/Super Mario/program/player.h"
+                },
+                "region": {
+                  "startLine": 67,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Player::{ctor}",
+                  "decoratedName": "??0Player@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Player::player_image_h"
           }
         },
         {
@@ -499,7 +851,7 @@
                   "uri": "file:///F:/チーム制作/Super Mario/program/player.h"
                 },
                 "region": {
-                  "startLine": 42,
+                  "startLine": 67,
                   "startColumn": 1
                 }
               },
@@ -531,7 +883,7 @@
                   "uri": "file:///F:/チーム制作/Super Mario/program/player.h"
                 },
                 "region": {
-                  "startLine": 42,
+                  "startLine": 67,
                   "startColumn": 1
                 }
               },
@@ -546,6 +898,134 @@
           ],
           "properties": {
             "targetSymbol": "Player::is_overturn"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'Player::image_x' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "analysisTarget": {
+            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///F:/チーム制作/Super Mario/program/player.h"
+                },
+                "region": {
+                  "startLine": 67,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Player::{ctor}",
+                  "decoratedName": "??0Player@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Player::image_x"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'Player::mode_' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "analysisTarget": {
+            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///F:/チーム制作/Super Mario/program/player.h"
+                },
+                "region": {
+                  "startLine": 67,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Player::{ctor}",
+                  "decoratedName": "??0Player@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Player::mode_"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'Agaric::mode_' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "analysisTarget": {
+            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///F:/チーム制作/Super Mario/program/agaric.h"
+                },
+                "region": {
+                  "startLine": 32,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Agaric::{ctor}",
+                  "decoratedName": "??0Agaric@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Agaric::mode_"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'Agaric::speed' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "analysisTarget": {
+            "uri": "file:///f:/チーム制作/super mario/program/game.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///F:/チーム制作/Super Mario/program/agaric.h"
+                },
+                "region": {
+                  "startLine": 32,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Agaric::{ctor}",
+                  "decoratedName": "??0Agaric@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "Agaric::speed"
           }
         }
       ],
@@ -571,7 +1051,7 @@
             "analysisTarget"
           ],
           "hashes": {
-            "sha-256": "9c16da231aa8b765bf25b26bbf9d23183ed11f811e17d42a18ce23f585235c1a"
+            "sha-256": "4086d1e87160c862c9f488a767e720af8fb746b3967bc55d31c9ec8b264c6f11"
           }
         },
         {
@@ -582,7 +1062,7 @@
             "resultFile"
           ],
           "hashes": {
-            "sha-256": "75e814d5ea41127c14ccc2a1711f4bd04f9620c01568cd4e1b78d098c48b8b63"
+            "sha-256": "c97576b21206bc8397e754742405001e68398b28f97b7958a79cc678f26cdbbc"
           }
         },
         {
@@ -593,7 +1073,18 @@
             "resultFile"
           ],
           "hashes": {
-            "sha-256": "f9d6123c9deefa09658883d8ee8e663b93475dbdde394eb1e40aef32cbba2eb8"
+            "sha-256": "a3a35a729d0ace3ef167de119584ffebc8c198bee477a62143d12a162fdc7c6c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///F:/チーム制作/Super Mario/program/agaric.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "464257b65d29459f652a434d39081d86fdcab65ef39a7076d669cfaeb840db20"
           }
         },
         {
