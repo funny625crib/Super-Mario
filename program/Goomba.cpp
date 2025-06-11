@@ -6,42 +6,31 @@
 #include "Goomba.h"
 __Enenys::_Enemys _Goomba;
 
+//void Goomba::Set_Pos(int h, int w)
+//{
+//	Pos_.Set((float)h, (float)w);
+//}
+
 void Goomba::Init(int map, int h, int w)
 {
-	//for (int i = 0; i < count_enemy_num; ++i) {
-	//	_Goomba[i].pos = { 800.0f,400.0f };
-	//}
-	//for (int i = 1; i < GOOMBA_MAX; ++i) {
-	//	_Goomba[i].pos = { 500.0f,400.0f };
-	//}
+
 	image_[0] = LoadGraph("data/Super Mario/enemy/0.png");
 	image_[1] = LoadGraph("data/Super Mario/enemy/1.png");
-	image_death_ = LoadGraph("data/Goomba/Goomba_Death.png");
+	image_death_ = LoadGraph("data/Super Mario/enemy/2.png");
 	goomba_flashing_flame = 0;
 	image_index = 0;
 
+	/*_Goomba.pos.x = (float)w * GROUND_SIZE;
+	_Goomba.pos.y = (float)h * GROUND_SIZE;*/
+	_Goomba.pos.x = 1.0f * w * GROUND_SIZE;
+	_Goomba.pos.y = 1.0f * h * GROUND_SIZE + GROUND_SIZE / 2;
+	Pos_ = _Goomba.pos;
+	//_Goomba.pos = Pos_;
+	check_display_on_ = true;
 	
-	for (int h1 = 0; h1 < MAP_H; ++h1) {
-		for (int w1 = 0; w1 < MAP_W; ++w1) {
-
-			if (map == 9) {
-
-				_Goomba.pos.x = w1 * GROUND_SIZE;
-				_Goomba.pos.y = h1 * GROUND_SIZE;
-			}
-		}
-	}
-	
-	//count_enemy_num++;
-//}
-
-//}
-//}
-	
-
 }
 
-void Goomba::Update(Float2& player_pos, float player_r, bool map_move_check)
+void Goomba::Update(Float2& player_pos, float player_r, bool map_move_check,  bool player_janp, Float2 map_move_pos)
 {
 
 	//クリボーの画像を左右反転させて歩いているように見せる
@@ -54,36 +43,58 @@ void Goomba::Update(Float2& player_pos, float player_r, bool map_move_check)
 		goomba_flashing_flame = 0;
 	}
 	//クリボー同士が当たった時に反転させる
-	for (int i = 0; i < GOOMBA_MAX; ++i) {
-		if (_Goomba.check_display_on_ == false) {
-			_Goomba.death_count += 1;
-			continue;
+	//for (int i = 0; i < GOOMBA_MAX; ++i) {
+		if (check_display_on_ == false) {
+			death_count += 1;
+			//continue;
 		}
-		for (int a = i; a < GOOMBA_MAX; ++a) {
-			if (i == a)continue;
+		goomba_x = (Pos_.x- map_move_pos.x) / GROUND_SIZE;
+		goomba_y = Pos_.y / GROUND_SIZE;
+		
+		
 
-			if (_Goomba.check_display_on_ == false) continue;
+		for (int h = 0; h < MAP_H; ++h) {
+			for (int w = 0; w < MAP_W; ++w) {
+				if (CheckCircleBoxHit(Pos_.x, Pos_.y, 35, map_pos_x- map_move_pos.x, map_pos_y, 35, 35)/* && map_data[goomba_y][goomba_x] != 0 && map_data[goomba_y][goomba_x] != 9 */) {
+					move_ *= -1;
 
-			if (CheckCircleHit(_Goomba.pos, 17, _Goomba.pos, 17)) {
-				_Goomba.move_ *= -1;
-				_Goomba.move_ *= -1;
+				}
+				//if (/*CheckCircleBoxHit( player_pos, player_r, ) &&*/ map_data[goomba_y][goomba_x ] != 0 && map_data[goomba_y][goomba_x ] != 9) {
+				if (CheckCircleBoxHit(Pos_.x, Pos_.y, 35, (goomba_x - 1) * 35, goomba_y * 35, 35, 35)/* && map_data[goomba_y][goomba_x] != 0 && map_data[goomba_y][goomba_x] != 9 */) {
+
+					move_ *= -1;
+
+				}
 			}
-
 		}
-		if (CheckCircleHit(_Goomba.pos, 17, player_pos, player_r)) {
-			//_Goomba[i].move_ *= -1;
-			_Goomba.check_display_on_ = false;
-			hit_player = true;
+		//for (int a = i; a < GOOMBA_MAX; ++a) {
+		//	if (i == a)continue;
+		//
+		//	if (_Goomba.check_display_on_ == false) continue;
+		//
+		//	if (CheckCircleHit(_Goomba.pos, 17, _Goomba.pos, 17)) {
+		//		_Goomba.move_ *= -1;
+		//		_Goomba.move_ *= -1;
+		//	}
+		//
+		//}
+		if (CheckCircleHit(Pos_, 32, player_pos, player_r) ) {
+			move_ *= -1;
 		}
-
+	if (CheckCircleHit(Pos_, 32, player_pos, player_r)&& player_janp==false) {
+		//_Goomba[i].move_ *= -1;
+		check_display_on_ = false;
+		hit_player = true;
 	}
 
-	
+	//}
+
+
 	float speed_map = 0;
 	if (map_move_check == true) {
 		speed_map = 2.5f;
 	}
-	_Goomba.pos.x -= 0.5f + speed_map;;
+	Pos_.x -= move_.x + speed_map;;
 
 
 	int  pos_w;
@@ -123,28 +134,33 @@ void Goomba::Update(Float2& player_pos, float player_r, bool map_move_check)
 
 
 
-	_Goomba.pos.x -= _Goomba.move_;
+	//Pos_.x -= move_.x;
 
 }
 
-void Goomba::Render(int& map, int h, int w)
+void Goomba::Render()
 {
-	DrawRotaGraph(_Goomba.pos.x, _Goomba.pos.y, 2.0f, 0, image_[image_index], TRUE);
-	//DrawRotaGraph(map, map,2.0f,0, image_[image_index], TRUE);
-	for (int i = 0; i < count_enemy_num; ++i) {
-		//if (_Goomba[i].check_display_on_ == true) {
-		DrawGraph(_Goomba.pos.x, _Goomba.pos.y, image_[image_index], TRUE);
 
-		//	}
-		if (_Goomba.death_count < 30) {
-			if (_Goomba.check_display_on_ == false) {
-				DrawGraph(_Goomba.pos.x, _Goomba.pos.y, image_death_, TRUE);
+
+
+	//DrawRotaGraph(map, map,2.0f,0, image_[image_index], TRUE);
+	//for (int i = 0; i < count_enemy_num; ++i) {
+		if (check_display_on_ == true) {
+			//	DrawGraph(_Goomba.pos.x, _Goomba.pos.y, image_[image_index], TRUE);
+			DrawRotaGraph(Pos_.x, Pos_.y, 2.0f, 0, image_[image_index], TRUE);
+		}
+		if (death_count < 30) {
+			if (check_display_on_ == false) {
+				//DrawGraph(_Goomba.pos.x, _Goomba.pos.y, image_death_, TRUE);
+				DrawRotaGraph(Pos_.x, Pos_.y, 2.0f, 0, image_death_, TRUE);
 			}
 		}
-	}
-	//DrawFormatString(0, 0, GetColor(255, 255, 255), "%d",image_index);
-	DrawFormatString(0, 0, GetColor(255, 255, 255), "%d", count_enemy_num);
-
+	//	DrawLineBox(goomba_x*35, goomba_y*35, goomba_x * 35 + 35, goomba_y * 35 + 35, GetColor(255, 255, 255));
+	//}
+	//DrawFormatString(0, 0, GetColor(255, 255, 255), "%f", _Goomba.pos.x);
+	//DrawFormatString(0, 0, GetColor(255, 255, 255), "%d", count_enemy_num);
+	//DrawFormatString(300, 30, GetColor(255, 255, 255), "%d", first_pos_x);
+	//DrawFormatString(300, 50, GetColor(255, 255, 255), "%d", first_pos_y);
 }
 
 void Goomba::Exit()

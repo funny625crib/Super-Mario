@@ -153,10 +153,13 @@
   <ItemGroup>
     <ClCompile Include="program\agaric.cpp" />
     <ClCompile Include="program\base.cpp" />
+    <ClCompile Include="program\Enemys.cpp" />
     <ClCompile Include="program\Game.cpp" />
+    <ClCompile Include="program\Goomba.cpp" />
     <ClCompile Include="program\Hit.cpp" />
     <ClCompile Include="program\Main.cpp" />
     <ClCompile Include="program\Map.cpp" />
+    <ClCompile Include="program\Object.cpp" />
     <ClCompile Include="program\Player.cpp" />
     <ClCompile Include="program\Random.cpp" />
     <ClCompile Include="program\Float2.cpp" />
@@ -164,10 +167,13 @@
   <ItemGroup>
     <ClInclude Include="program\agaric.h" />
     <ClInclude Include="program\base.h" />
+    <ClInclude Include="program\Enemys.h" />
     <ClInclude Include="program\Game.h" />
+    <ClInclude Include="program\Goomba.h" />
     <ClInclude Include="program\Hit.h" />
     <ClInclude Include="program\Main.h" />
     <ClInclude Include="program\Map.h" />
+    <ClInclude Include="program\Object.h" />
     <ClInclude Include="program\Player.h" />
     <ClInclude Include="program\Random.h" />
     <ClInclude Include="program\Float2.h" />
