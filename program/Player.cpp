@@ -41,6 +41,9 @@ void Player::Init()
 	image_small = LoadGraph("data/player/Mario.png");
 	image_big = LoadGraph("data/player/Mario_big.png");
 
+	//プレイヤーの座標を初期化する
+	pos_ = { 0.0f,0.0f };
+
 	//プレイヤーの画像は最初は反転しなかった
 	is_overturn = false;
 
@@ -157,7 +160,6 @@ void Player::Update(bool& is_on_ground)
 void Player::Render()
 {
 	DrawRectGraphF(pos_.x, pos_.y, image_x, image_y, player_image_w, player_image_h, image_, TRUE, is_overturn);
-
 }
 //---------------------------------------------------------------------------------
 //	終了処理

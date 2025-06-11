@@ -57,7 +57,7 @@ int image_y[MAP_H][MAP_W];
 	void Render();	//	描画処理
 	void Exit();		//	終了処理
 	void Agaric_hit(Float2& agaric_pos,float& agaric_speed, int agaric_mode);         //	キリコと壁の当たり判定
-	void Player_hit(Float2& player_pos, bool& jump_mode, int jump_frame, int player_size, int player_size_w); //プレイヤーと壁の当たり判定
+	void Player_hit(Float2& player_pos, bool& jump_mode, int jump_frame, int player_size, int player_size_w,int& game_mode); //プレイヤーと壁の当たり判定
 
 
 private:
