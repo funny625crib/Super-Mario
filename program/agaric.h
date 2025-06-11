@@ -13,8 +13,8 @@ public:
 
 
 	void Init();     //	初期化処理
-	void Update(int pos, int pos_y, bool is_hit, int map_pos_x);	//	更新処理
-	void Render();	//	描画処理
+	void Update(int pos, int pos_y, bool is_hit, float map_pos_x);	//	更新処理
+	void Render(Float2 map_pos);	//	描画処理
 	void Exit();		//	終了処理
 
 	//キノコの移動モード

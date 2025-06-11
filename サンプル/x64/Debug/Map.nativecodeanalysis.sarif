@@ -26,7 +26,7 @@
             "analysisTarget"
           ],
           "hashes": {
-            "sha-256": "c9273440a15f61065f7f027c894245bf2c7bbeb1540841d06cc80573704def48"
+            "sha-256": "2717c3cf5c9e5890ba4d446bf4963acf8ffa69250d3007a81dcd67efbd9a062f"
           }
         },
         {
@@ -90,7 +90,7 @@
             "uri": "file:///f:/チーム制作/super mario/program/map.h"
           },
           "hashes": {
-            "sha-256": "75e814d5ea41127c14ccc2a1711f4bd04f9620c01568cd4e1b78d098c48b8b63"
+            "sha-256": "c97576b21206bc8397e754742405001e68398b28f97b7958a79cc678f26cdbbc"
           }
         },
         {
@@ -114,7 +114,15 @@
             "uri": "file:///f:/チーム制作/super mario/program/player.h"
           },
           "hashes": {
-            "sha-256": "f9d6123c9deefa09658883d8ee8e663b93475dbdde394eb1e40aef32cbba2eb8"
+            "sha-256": "a3a35a729d0ace3ef167de119584ffebc8c198bee477a62143d12a162fdc7c6c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///f:/チーム制作/super mario/program/agaric.h"
+          },
+          "hashes": {
+            "sha-256": "464257b65d29459f652a434d39081d86fdcab65ef39a7076d669cfaeb840db20"
           }
         }
       ]

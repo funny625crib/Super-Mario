@@ -27,18 +27,21 @@ void GameInit()
 //---------------------------------------------------------------------------------
 void GameUpdate()
 {
-	map.Update(player.pos_, player.is_jump, player.jump_frame,player.player_size);
+	map.Update();
 
-	player.Update(map.is_on_ground, map.is_wall_have, agaric.pos_.x);
+	player.Update(map.is_on_ground, map.is_wall_have);
 
 	agaric.Update(map.image_x[8][20], map.image_y[8][20], map.agaric_is_hit, map.pos_.x);
 
 
 	//	キリコとマップの当たり判定
-	map.agaric_hit(agaric.pos_, agaric.speed, agaric.mode_);
+	map.Agaric_hit(agaric.pos_, agaric.speed, agaric.mode_);
+
+	//プレイヤーと壁の当たり判定
+	map.Player_hit(player.pos_, player.is_jump, player.jump_frame, player.player_size);
 
 	//プレイヤーとキリコの当たり判定
-	player.agaric_eat(agaric.pos_, agaric.mode_);
+	player.agaric_eat(agaric.pos_, agaric.mode_,map.pos_, map.is_on_ground);
 }
 //---------------------------------------------------------------------------------
 //	描画処理
@@ -46,7 +49,7 @@ void GameUpdate()
 void GameRender()
 {
 	DrawBox(0, 0, SCREEN_W, SCREEN_H, GetColor(97, 124, 182), TRUE);   //背景
-	agaric.Render();
+	agaric.Render(map.pos_);
 	map.Render();
 	player.Render();
 

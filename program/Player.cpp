@@ -8,9 +8,9 @@
 //---------------------------------------------------------------------------------
 //	プレイヤーとキリコの当たり判定
 //---------------------------------------------------------------------------------
-void Player::agaric_eat(Float2& agaric_pos, int& agaric_mode)
+void Player::agaric_eat(Float2& agaric_pos, int& agaric_mode,Float2 map_pos, bool is_on_ground)
 {
-	if (CheckBoxHit(pos_.x, pos_.y, PLAYER_IMAGE_W, PLAYER_IMAGE_H, agaric_pos.x, agaric_pos.y, AGARIC_IMAGE_SIZE, AGARIC_IMAGE_SIZE)
+	if (CheckBoxHit(pos_.x, pos_.y, PLAYER_IMAGE_W, PLAYER_IMAGE_H, agaric_pos.x+map_pos.x, agaric_pos.y, AGARIC_IMAGE_SIZE, AGARIC_IMAGE_SIZE)
 		&& agaric_mode == Agaric::MODE_MOVE)
 	{
 		agaric_mode = Agaric::MODE_DISAPPEAR;
@@ -21,6 +21,13 @@ void Player::agaric_eat(Float2& agaric_pos, int& agaric_mode)
 		image_ = image_big;
 		image_x = 0;
 		player_size = SIZE_BIG;
+
+		//プレイヤーが地面いるなら
+		if (is_on_ground == true)
+		{
+			//プレイヤーを地下に出さない
+			pos_.y -= GROUND_SIZE;
+		}
 		
 	}
 }
@@ -54,7 +61,7 @@ void Player::Init()
 //---------------------------------------------------------------------------------
 //	更新処理
 //---------------------------------------------------------------------------------
-void Player::Update(bool& is_on_ground, bool is_wall_have, float& agaric_pos_x)
+void Player::Update(bool& is_on_ground, bool is_wall_have)
 {
 
 	//フレーム
@@ -70,7 +77,7 @@ void Player::Update(bool& is_on_ground, bool is_wall_have, float& agaric_pos_x)
 
 	if (CheckHitKey(KEY_INPUT_D) && is_wall_have == false)
 	{
-		agaric_pos_x -= 3.0f;
+		
 		mode_ = MODE_MOVE;
 		pos_.x += PLAYER_MOVE_SPEED;     //RIGHT
 		//画像を反転しません
