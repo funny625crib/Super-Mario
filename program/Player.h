@@ -58,8 +58,10 @@ int player_image_w;
 	bool is_jump;
 	int jump_frame;
 
+
+
 	void Init();     //	初期化処理
-	void Update(bool& is_on_ground, bool is_wall_have);	//	更新処理
+	void Update(bool& is_on_ground);	//	更新処理
 	void Render();	//	描画処理
 	void Exit();		//	終了処理
 	void agaric_eat(Float2& agaric_pos,int& agaric_mode,Float2 map_pos,bool is_on_ground);  //	プレイヤーとキリコの当たり判定
