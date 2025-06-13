@@ -1,4 +1,4 @@
-#include "Player.h"
+ï»¿#include "Player.h"
 #include "map.h"
 #include "Game.h"
 #include "Main.h"
@@ -6,7 +6,7 @@
 #include "Hit.h"
 
 //---------------------------------------------------------------------------------
-//	ƒvƒŒƒCƒ„[‚ÆƒLƒŠƒR‚Ì“–‚½‚è”»’è
+//	ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã¨ã‚­ãƒªã‚³ã®å½“ãŸã‚Šåˆ¤å®š
 //---------------------------------------------------------------------------------
 void Player::agaric_eat(Float2& agaric_pos, int& agaric_mode,Float2 map_pos, bool is_on_ground)
 {
@@ -15,17 +15,17 @@ void Player::agaric_eat(Float2& agaric_pos, int& agaric_mode,Float2 map_pos, boo
 	{
 		agaric_mode = Agaric::MODE_DISAPPEAR;
 
-		//ƒ}ƒŠƒI‚Ì‰æ‘œ‚Í‘å‚«‚­‚È‚é
+		//ãƒãƒªã‚ªã®ç”»åƒã¯å¤§ãããªã‚‹
 		player_image_h = PLAYER_BIG_IMAGE_H;
 		player_image_w = PLAYER_BIG_IMAGE_W;
 		image_ = image_big;
 		image_x = 0;
 		player_size = SIZE_BIG;
 
-		//ƒvƒŒƒCƒ„[‚ª’n–Ê‚¢‚é‚È‚ç
+		//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒåœ°é¢ã„ã‚‹ãªã‚‰
 		if (is_on_ground == true)
 		{
-			//ƒvƒŒƒCƒ„[‚ğ’n‰º‚Éo‚³‚È‚¢
+			//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’åœ°ä¸‹ã«å‡ºã•ãªã„
 			pos_.y -= GROUND_SIZE;
 		}
 		
@@ -33,25 +33,25 @@ void Player::agaric_eat(Float2& agaric_pos, int& agaric_mode,Float2 map_pos, boo
 }
 
 //---------------------------------------------------------------------------------
-//	‰Šú‰»ˆ—
+//	åˆæœŸåŒ–å‡¦ç†
 //---------------------------------------------------------------------------------
 void Player::Init()
 {
-	//ƒvƒŒƒCƒ„[‚Ì‰æ‘œ‚Ì‰Šú‰»
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ç”»åƒã®åˆæœŸåŒ–
 	image_small = LoadGraph("data/player/Mario.png");
 	image_big = LoadGraph("data/player/Mario_big.png");
 
-	//ƒvƒŒƒCƒ„[‚Ì‰æ‘œ‚ÍÅ‰‚Í”½“]‚µ‚È‚©‚Á‚½
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ç”»åƒã¯æœ€åˆã¯åè»¢ã—ãªã‹ã£ãŸ
 	is_overturn = false;
 
-	//ƒvƒŒƒCƒ„[‚Ìƒ‚[ƒhÅ‰‚ÍIDLE
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ãƒ¢ãƒ¼ãƒ‰æœ€åˆã¯IDLE
 	mode_ = MODE_IDLE;
 
-	//Å‰‚ÍƒWƒƒƒ“ƒv‚µ‚Ä‚¢‚È‚¢
+	//æœ€åˆã¯ã‚¸ãƒ£ãƒ³ãƒ—ã—ã¦ã„ãªã„
 	is_jump = false;
 	jump_frame = 0;
 
-	//Å‰‚Í¬‚³‚¢ƒ}ƒŠƒI
+	//æœ€åˆã¯å°ã•ã„ãƒãƒªã‚ª
 	player_image_h = PLAYER_IMAGE_H;
 	player_image_w = PLAYER_IMAGE_W;
 	image_ = image_small;
@@ -59,15 +59,17 @@ void Player::Init()
 }
 
 //---------------------------------------------------------------------------------
-//	XVˆ—
+//	æ›´æ–°å‡¦ç†
 //---------------------------------------------------------------------------------
-void Player::Update(bool& is_on_ground, bool is_wall_have)
+void Player::Update(bool& is_on_ground)
 {
 
-	//ƒtƒŒ[ƒ€
+	//ãƒ•ãƒ¬ãƒ¼ãƒ 
 	static int player_frame;
 
-	//ˆê‚Ä‚«‚ÉƒvƒŒƒCƒ„[‚Ì‘ã‚í‚è‚É‘€ì‚·‚é
+	
+
+	//ä¸€æ™‚ã¦ãã«ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ä»£ã‚ã‚Šã«æ“ä½œã™ã‚‹
 	if (PushHitKey(KEY_INPUT_SPACE) && is_on_ground == true)
 	{
 		is_jump = true;
@@ -75,12 +77,12 @@ void Player::Update(bool& is_on_ground, bool is_wall_have)
 		jump_frame = 0;
 	}
 
-	if (CheckHitKey(KEY_INPUT_D) && is_wall_have == false)
+	if (CheckHitKey(KEY_INPUT_D))
 	{
 		
 		mode_ = MODE_MOVE;
 		pos_.x += PLAYER_MOVE_SPEED;     //RIGHT
-		//‰æ‘œ‚ğ”½“]‚µ‚Ü‚¹‚ñ
+		//ç”»åƒã‚’åè»¢ã—ã¾ã›ã‚“
 		is_overturn = false;
 
 	}
@@ -88,7 +90,7 @@ void Player::Update(bool& is_on_ground, bool is_wall_have)
 	{
 		mode_ = MODE_MOVE;
 		pos_.x -= PLAYER_MOVE_SPEED;     //LEFT
-		//‰æ‘œ‚ğ”½“]‚µ‚Ü‚¹‚ñ
+		//ç”»åƒã‚’åè»¢ã—ã¾ã›ã‚“
 		is_overturn = true;
 	}
 
@@ -100,13 +102,13 @@ void Player::Update(bool& is_on_ground, bool is_wall_have)
 			pos_.y -= 15.0f;
 		}
 
-		//ƒWƒƒƒ“ƒv‚Ì‰æ‘œ‚É•Ï‚¦‚é
+		//ã‚¸ãƒ£ãƒ³ãƒ—ã®ç”»åƒã«å¤‰ãˆã‚‹
 		image_x = 5 * player_image_w;
 	}
 
 
 
-	//‰½‚ÌƒL[‚ª‰Ÿ‚³‚ê‚Ä‚¢‚È‚¢‚Æ‚«
+	//ä½•ã®ã‚­ãƒ¼ãŒæŠ¼ã•ã‚Œã¦ã„ãªã„ã¨ã
 	if (CheckHitKeyAll() == 0)
 	{
 		mode_ = MODE_IDLE;
@@ -119,7 +121,7 @@ void Player::Update(bool& is_on_ground, bool is_wall_have)
 		pos_.x = SCREEN_W / 2;
 	}
 
-	//ƒvƒŒƒCƒ„[‚Ìƒ‚[ƒh‚É‘Î‚·‚éˆ—
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ãƒ¢ãƒ¼ãƒ‰ã«å¯¾ã™ã‚‹å‡¦ç†
 	switch (mode_)
 	{
 	case MODE_IDLE:
@@ -130,7 +132,7 @@ void Player::Update(bool& is_on_ground, bool is_wall_have)
 
 		break;
 	case MODE_MOVE:
-		//ƒvƒŒƒCƒ„[‚ÌˆÚ“®‚É”º‚Á‚Ä‰æ‘œ‚ª•Ï‰»‚·‚é
+		//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ç§»å‹•ã«ä¼´ã£ã¦ç”»åƒãŒå¤‰åŒ–ã™ã‚‹
 		if (is_jump == false)
 		{
 			player_frame++;
@@ -150,14 +152,15 @@ void Player::Update(bool& is_on_ground, bool is_wall_have)
 
 }
 //---------------------------------------------------------------------------------
-//	•`‰æˆ—
+//	æç”»å‡¦ç†
 //---------------------------------------------------------------------------------
 void Player::Render()
 {
 	DrawRectGraphF(pos_.x, pos_.y, image_x, image_y, player_image_w, player_image_h, image_, TRUE, is_overturn);
+
 }
 //---------------------------------------------------------------------------------
-//	I—¹ˆ—
+//	çµ‚äº†å‡¦ç†
 //---------------------------------------------------------------------------------
 void Player::Exit()
 {

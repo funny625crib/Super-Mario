@@ -1,4 +1,4 @@
-#include "Main.h"
+ï»¿#include "Main.h"
 #include "Game.h"
 #include "Map.h"
 #include "Player.h"
@@ -11,26 +11,26 @@ using namespace std;
 
 
 //---------------------------------------------------------------------------------
-//	ƒLƒŠƒR‚Æƒ}ƒbƒv‚Ì“–‚½‚è”»’è
+//	ã‚­ãƒªã‚³ã¨ãƒãƒƒãƒ—ã®å½“ãŸã‚Šåˆ¤å®š
 //---------------------------------------------------------------------------------
-void Map::Agaric_hit(Float2& agaric_pos, float& agaric_speed,int agaric_mode)
+void Map::Agaric_hit(Float2& agaric_pos, float& agaric_speed, int agaric_mode)
 {
-	//ƒLƒŠƒR‚Ì‰E‚Í•Ç‚È‚ç,¶‚És‚«‚Ü‚·
-	if (map[((int)agaric_pos.y / GROUND_SIZE)][((int)(agaric_pos.x ) / GROUND_SIZE)] == 5&& agaric_mode == Agaric::MODE_MOVE)
+	//ã‚­ãƒªã‚³ã®å³ã¯å£ãªã‚‰,å·¦ã«è¡Œãã¾ã™
+	if (map[((int)agaric_pos.y / GROUND_SIZE)][((int)(agaric_pos.x) / GROUND_SIZE)] == 5 && agaric_mode == Agaric::MODE_MOVE)
 	{
 		agaric_speed = -agaric_speed;
 	}
 
-	//ƒLƒŠƒR‚ª’n–Ê‚ÉG‚ê‚é‚ÆA—‰º‚µ‚È‚­‚È‚è‚Ü‚·
-	if (map[((int)agaric_pos.y / GROUND_SIZE) + 1][((int)(agaric_pos.x ) / GROUND_SIZE)] != 0)    //’n–Ê
+	//ã‚­ãƒªã‚³ãŒåœ°é¢ã«è§¦ã‚Œã‚‹ã¨ã€è½ä¸‹ã—ãªããªã‚Šã¾ã™
+	if (map[((int)agaric_pos.y / GROUND_SIZE) + 1][((int)(agaric_pos.x) / GROUND_SIZE)] != 0)    //åœ°é¢
 	{
 
 	}
-	else if(agaric_mode == Agaric::MODE_MOVE)
+	else if (agaric_mode == Agaric::MODE_MOVE)
 	{
-		//ƒLƒŠƒR‚Íd—Í‚ğó‚¯‚é
+		//ã‚­ãƒªã‚³ã¯é‡åŠ›ã‚’å—ã‘ã‚‹
 		agaric_pos.y += 10.0f;
-		
+
 	}
 
 }
@@ -38,9 +38,9 @@ void Map::Agaric_hit(Float2& agaric_pos, float& agaric_speed,int agaric_mode)
 
 
 //---------------------------------------------------------------------------------
-//	ƒvƒŒƒCƒ„[‚Æƒ}ƒbƒv‚Ì“–‚½‚è”»’è
+//	ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã¨ãƒ–ãƒ­ãƒƒã‚¯ã®å½“ãŸã‚Šåˆ¤å®š
 //---------------------------------------------------------------------------------
-void Map::Player_hit(Float2& player_pos, bool& jump_mode, int jump_frame, int player_size)
+void Map::Player_hit(Float2& player_pos, bool& jump_mode, int jump_frame, int player_size, int player_size_w)
 {
 	static int num;
 	if (player_size == Player::SIZE_SMALL)
@@ -52,14 +52,14 @@ void Map::Player_hit(Float2& player_pos, bool& jump_mode, int jump_frame, int pl
 		num = 2;
 	}
 
-	//ƒvƒŒƒCƒ„[‚ª’n–Ê‚ÉG‚ê‚é‚ÆA—‰º‚µ‚È‚­‚È‚è‚Ü‚·
-	if (map[((int)player_pos.y / GROUND_SIZE) + num][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] != 0)    //’n–Ê
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒåœ°é¢ã«è§¦ã‚Œã‚‹ã¨ã€è½ä¸‹ã—ãªããªã‚Šã¾ã™
+	if (map[((int)player_pos.y / GROUND_SIZE) + num][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] != 0)    //åœ°é¢
 	{
 		is_on_ground = true;
 	}
 	else
 	{
-		//ƒvƒŒƒCƒ„[‚Íd—Í‚ğó‚¯‚é
+		//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã¯é‡åŠ›ã‚’å—ã‘ã‚‹
 		player_pos.y += 5.0f;
 		is_on_ground = false;
 
@@ -70,62 +70,90 @@ void Map::Player_hit(Float2& player_pos, bool& jump_mode, int jump_frame, int pl
 
 	}
 
-	//•Ç‚É‚Ô‚Â‚©‚é‚Æ‘O‚Éi‚ß‚È‚¢
-	if (map[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x - pos_.x) / GROUND_SIZE) + 1] != 0
-		|| map[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x - pos_.x) / GROUND_SIZE) - 1] != 0)   //•Ç
+	//å£ã«ã¶ã¤ã‹ã‚‹ã¨å‰ã«é€²ã‚ãªã„
+	//å³ãŒå£ãŒã‚ã‚‹ã¨ã
+	if (map[((int)player_pos.y / GROUND_SIZE)][(int)(player_pos.x + player_size_w - 10.0f - pos_.x) / GROUND_SIZE] != 0)
 	{
-		is_wall_have = true;
-	}
-	else
-	{
-		is_wall_have = false;
+		if (CheckHitKey(KEY_INPUT_D))
+		{
+			player_pos.x -= 2.0f;
+		}
 	}
 
-	//•Ç‚É‚Ô‚Â‚©‚é‚Æã‚Éi‚ß‚È‚¢
+
+	//å·¦ãŒå£ãŒã‚ã‚‹ã¨ã
+	if (map[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] != 0)
+	{
+		if (CheckHitKey(KEY_INPUT_A))
+		{
+			player_pos.x += 2.0f;
+		}
+	}
+
+
+	//å£ã«ã¶ã¤ã‹ã‚‹ã¨ä¸Šã«é€²ã‚ãªã„
 	if (map[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] != 0)
 	{
 		jump_mode = false;
 	}
 
-	//•Ç‚É‚Ô‚Â‚©‚é‚Æ•Ç‚Íã‚Éi‚ß‚é
+	//å£ã«ã¶ã¤ã‹ã‚‹ã¨å£ã¯ä¸Šã«é€²ã‚ã‚‹
 	if (map[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] == 4)
 	{
 		is_hit = true;
 		wall_x = ((int)player_pos.y / GROUND_SIZE);
 		wall_y = ((int)(player_pos.x - pos_.x) / GROUND_SIZE);
 	}
-	else if (map[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] == 3)   //” ‚É“–‚½‚Á‚½‚ç
+	else if (map[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] == 3)   //ç®±ã«å½“ãŸã£ãŸã‚‰
 	{
 		is_hit = true;
 		wall_x = ((int)player_pos.y / GROUND_SIZE);
 		wall_y = ((int)(player_pos.x - pos_.x) / GROUND_SIZE);
 		box_image_x[((int)player_pos.y / GROUND_SIZE)][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] = 3 * GROUND_SIZE;
 
-		//ƒLƒmƒR‚ªŠÜ‚Ş” ‚É“–‚½‚Á‚½‚ç
+		//ã‚­ãƒã‚³ãŒå«ã‚€ç®±ã«å½“ãŸã£ãŸã‚‰
 		if (((int)player_pos.y / GROUND_SIZE) == 8 && ((int)(player_pos.x - pos_.x) / GROUND_SIZE) == 20)
 		{
 			agaric_is_hit = true;
 		}
 	}
 
-	
-	if (is_hit == true)
+	switch (player_size)
 	{
-		//•Ç‚ÌˆÚ“®ƒXƒs[ƒh
-		static float speed = 5.0f;
-		speed--;
-		image_y[wall_x][wall_y] -= speed;
-		if (speed <= -4.0f)
+		//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒå°ã•ã„ã¨ã
+	case Player::SIZE_SMALL:
+		if (is_hit == true)
 		{
-			is_hit = false;
-			speed = 5.0f;
+			//ãƒ–ãƒ­ãƒƒã‚¯ã®ç§»å‹•ã‚¹ãƒ”ãƒ¼ãƒ‰
+			static float speed = 5.0f;
+			speed--;
+			image_y[wall_x][wall_y] -= speed;
+			if (speed <= -4.0f)
+			{
+				is_hit = false;
+				speed = 5.0f;
+			}
 		}
+		break;
+		//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒå¤§ãã„ã¨ã
+	case Player::SIZE_BIG:
+		if (is_hit == true)
+		{
+			//ãƒ–ãƒ­ãƒƒã‚¯ãŒç ´å£Šã•ã‚Œã‚‹(ã¯ã¦ãªãƒ–ãƒ­ãƒƒã‚¯ä»¥å¤–)
+			if (map[wall_x][wall_y] == 4)
+			{
+				map[wall_x][wall_y] = 0;
+			}
+
+			is_hit = false;
+		}
+		break;
 	}
 
-	//ƒvƒŒƒCƒ„[‚ÌˆÚ“®‚É”º‚Á‚Ä’n}‚àˆÚ“®‚·‚é(ƒvƒŒƒCƒ„[‚ÌˆÊ’u‚ª’n}‚Ì^‚ñ’†‚É‚ ‚éê‡)
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ç§»å‹•ã«ä¼´ã£ã¦åœ°å›³ã‚‚ç§»å‹•ã™ã‚‹(ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ä½ç½®ãŒåœ°å›³ã®çœŸã‚“ä¸­ã«ã‚ã‚‹å ´åˆ)
 	if (CheckHitKey(KEY_INPUT_D) && player_pos.x >= SCREEN_W / 2)
 	{
-		pos_.x -= 3.0f;   //ƒvƒŒƒCƒ„[‚ÌˆÚ“®‹——£‚ğ‹L˜^‚·‚é
+		pos_.x -= 3.0f;   //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ç§»å‹•è·é›¢ã‚’è¨˜éŒ²ã™ã‚‹
 		for (int h = 0; h < MAP_H; ++h)
 		{
 			for (int w = 0; w < MAP_W; ++w)
@@ -144,57 +172,57 @@ void Map::Player_hit(Float2& player_pos, bool& jump_mode, int jump_frame, int pl
 
 
 //---------------------------------------------------------------------------------
-//	‰Šú‰»ˆ—
+//	åˆæœŸåŒ–å‡¦ç†
 //---------------------------------------------------------------------------------
 void Map::Init()
 {
 
-	Map_image_ = LoadGraph("data/map/map1.png");  //‚Æ‚è‚ ‚¦‚¸ƒ}ƒbƒv‚Ì‰æ‘œ‚ğ“ü‚é
+	Map_image_ = LoadGraph("data/map/map1.png");  //ã¨ã‚Šã‚ãˆãšãƒãƒƒãƒ—ã®ç”»åƒã‚’å…¥ã‚‹
 
-	//‚¢‚ë‚¢‚ë‚È‰æ‘œ‚ğ‰Šú‰»‚·‚é
+	//ã„ã‚ã„ã‚ãªç”»åƒã‚’åˆæœŸåŒ–ã™ã‚‹
 	Ground_image_ = LoadGraph("data/map/Ground.png");
 	Ground1_image_ = LoadGraph("data/map/Ground1.png");
 	Box_image_ = LoadGraph("data/map/Box.png");
 	Wall_image_ = LoadGraph("data/map/Wall.png");
 
 
-	// ƒtƒ@ƒCƒ‹‚©‚ç“Ç‚İ‚İ
+	// ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰èª­ã¿è¾¼ã¿
 	ifstream file("data/map/txt/map1.txt", ios::in);
 
-	//ƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚é‚©‚Ç‚¤‚©
+	//ãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã‚‹ã‹ã©ã†ã‹
 	if (!file.is_open()) {
-		printfDx("ƒtƒ@ƒCƒ‹‚ğŠJ‚¯‚Ü‚¹‚ñ‚Å‚µ‚½\n");
+		printfDx("ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ã‘ã¾ã›ã‚“ã§ã—ãŸ\n");
 		return;
 	}
 
 	for (int h = 0; h < MAP_H; ++h) {
 
-		//ƒ}ƒbƒv•¶š—ñ‚ğ‘ã“ü
+		//ãƒãƒƒãƒ—æ–‡å­—åˆ—ã‚’ä»£å…¥
 		string str;
 
 		getline(file, str);
 
-		//•¶š—ñ‚Ì•ªŠ„
+		//æ–‡å­—åˆ—ã®åˆ†å‰²
 		stringstream sstr(str);
 
 		for (int w = 0; w < MAP_W; ++w) {
 
-			//•ªŠ„‚µ‚½•¶š‚ğ•Û‘¶‚·‚é—p•Ï”
+			//åˆ†å‰²ã—ãŸæ–‡å­—ã‚’ä¿å­˜ã™ã‚‹ç”¨å¤‰æ•°
 			int num = 0;
 
-			//•Ï”‚É‘ã“ü
+			//å¤‰æ•°ã«ä»£å…¥
 			sstr >> num;
 
-			//ƒ}ƒbƒv‚É‘ã“ü
+			//ãƒãƒƒãƒ—ã«ä»£å…¥
 			map[h][w] = num;
 		}
 	}
 
 
-	//ƒtƒ@ƒCƒ‹‚ğ•Â‚ß‚é
+	//ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‰ã‚ã‚‹
 	file.close();
 
-	//ƒ}ƒbƒv‚ÌÀ•W‚ğ‰Šú‰»‚·‚é
+	//ãƒãƒƒãƒ—ã®åº§æ¨™ã‚’åˆæœŸåŒ–ã™ã‚‹
 	pos_ = { -10.0f,0.0f };
 
 
@@ -209,10 +237,9 @@ void Map::Init()
 		}
 	}
 
-	//Å‰‚Í’n–Ê‚É“–‚½‚Á‚Ä‚¢‚é
+	//æœ€åˆã¯åœ°é¢ã«å½“ãŸã£ã¦ã„ã‚‹
 	is_on_ground = true;
 
-	is_wall_have = false;
 
 	is_hit = false;
 
@@ -221,14 +248,14 @@ void Map::Init()
 
 
 //---------------------------------------------------------------------------------
-//	XVˆ—
+//	æ›´æ–°å‡¦ç†
 //---------------------------------------------------------------------------------
 void Map::Update()
 {
-	
 
 
-	//” ‚ÌƒAƒjƒ[ƒVƒ‡ƒ“
+
+	//ç®±ã®ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
 	static int frame;
 	frame++;
 	static int box_speed = 35;
@@ -257,15 +284,15 @@ void Map::Update()
 }
 
 //---------------------------------------------------------------------------------
-//	•`‰æˆ—
+//	æç”»å‡¦ç†
 //---------------------------------------------------------------------------------
 void Map::Render()
 {
 
-	DrawGraphF(pos_.x, pos_.y, Map_image_, TRUE);    //”wŒi
+	DrawGraphF(pos_.x, pos_.y, Map_image_, TRUE);    //èƒŒæ™¯
 
 
-	//“ñŸŒ³”z—ñ‚Åƒ}ƒbƒv‚ğ•`‰æ‚·‚é
+	//äºŒæ¬¡å…ƒé…åˆ—ã§ãƒãƒƒãƒ—ã‚’æç”»ã™ã‚‹
 	for (int h = 0; h < MAP_H; ++h)
 	{
 		for (int w = 0; w < MAP_W; ++w)
@@ -288,12 +315,11 @@ void Map::Render()
 			}
 		}
 	}
-
 }
 
 
 //---------------------------------------------------------------------------------
-//	I—¹ˆ—
+//	çµ‚äº†å‡¦ç†
 //---------------------------------------------------------------------------------
 
 void Map::Exit()
