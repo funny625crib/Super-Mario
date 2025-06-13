@@ -18,6 +18,11 @@ const int GOOMBA_MAX = 15;
 		int index_ground;
 		int map_pos_x_ground[1000];
 		int map_pos_y_ground[1000];
+
+		int index_break_block;
+		int map_pos_x_break_block[100];
+		int map_pos_y_break_block[100];
+
 		bool check_display_on_ = true;
 		Float2 Pos_;
 		int map_pos_x_pipe[200];

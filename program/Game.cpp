@@ -50,8 +50,14 @@ void GameInit()
 				if (map.map[h][w] == 1) {
 					goomba[i].map_pos_x_ground[goomba[i].index_ground] = w * 35;
 					goomba[i].map_pos_y_ground[goomba[i].index_ground] = h * 35;
-
 					goomba[i].index_ground++;
+
+				}
+				if (map.map[h][w] == 2|| map.map[h][w] == 3) {
+					goomba[i].map_pos_x_break_block[goomba[i].index_break_block] = w * 35;
+					goomba[i].map_pos_y_break_block[goomba[i].index_break_block] = h * 35;
+
+					goomba[i].index_break_block++;
 
 				}
 			}
@@ -98,7 +104,14 @@ void GameUpdate()
 				goomba[i].Pos_.y = goomba[i].map_pos_y_ground[a] - 35 / 2 - 1;
 			}
 		}
-		goomba[i].Pos_.y += 0.1f;
+
+		for (int a = 0; a < goomba[i].index_break_block; ++a) {
+			if (CheckCircleBoxHit(goomba[i].Pos_.x, goomba[i].Pos_.y, 35, goomba[i].map_pos_x_break_block[a] + map.pos_.x, goomba[i].map_pos_y_break_block[a], 35, 35)) {
+
+				goomba[i].Pos_.y = goomba[i].map_pos_y_break_block[a] - 35 / 2 - 1;
+			}
+		}
+		goomba[i].Pos_.y += 2.0f;
 	}
 }
 //---------------------------------------------------------------------------------
