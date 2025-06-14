@@ -149,7 +149,7 @@ void Map::Player_hit(Float2& player_pos, bool& jump_mode, int jump_frame, int pl
 	}
 
 	//プレイヤーの移動に伴って地図も移動する(プレイヤーの位置が地図の真ん中にある場合)
-	if (CheckHitKey(KEY_INPUT_D) && player_pos.x >= SCREEN_W / 2)
+	if (CheckHitKey(KEY_INPUT_D) && player_pos.x >= SCREEN_W / 2&&pos_.x> -IMAGE_W + SCREEN_W)
 	{
 		pos_.x -= 3.0f;   //プレイヤーの移動距離を記録する
 		for (int h = 0; h < MAP_H; ++h)
@@ -162,10 +162,7 @@ void Map::Player_hit(Float2& player_pos, bool& jump_mode, int jump_frame, int pl
 		}
 	}
 
-	if (pos_.x < -IMAGE_W + SCREEN_W)
-	{
-		pos_.x = -IMAGE_W + SCREEN_W;
-	}
+	
 
 
 	//プレイヤーがマップ以外に落ちると
