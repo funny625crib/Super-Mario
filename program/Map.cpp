@@ -35,12 +35,10 @@ void Map::Agaric_hit(Float2& agaric_pos, float& agaric_speed, int agaric_mode)
 
 }
 
-
-
 //---------------------------------------------------------------------------------
 //	プレイヤーとブロックの当たり判定
 //---------------------------------------------------------------------------------
-void Map::Player_hit(Float2& player_pos, bool& jump_mode, int jump_frame, int player_size, int player_size_w)
+void Map::Player_hit(Float2& player_pos, bool& jump_mode, int jump_frame, int player_size, int player_size_w,int& game_mode)
 {
 	static int num;
 	if (player_size == Player::SIZE_SMALL)
@@ -168,6 +166,15 @@ void Map::Player_hit(Float2& player_pos, bool& jump_mode, int jump_frame, int pl
 	{
 		pos_.x = -IMAGE_W + SCREEN_W;
 	}
+
+
+	//プレイヤーがマップ以外に落ちると
+	if (player_pos.y > SCREEN_H)
+	{
+		//ゲームオーバー
+		game_mode = GAME_OVER;
+	}
+
 }
 
 
@@ -177,7 +184,8 @@ void Map::Player_hit(Float2& player_pos, bool& jump_mode, int jump_frame, int pl
 void Map::Init()
 {
 
-	Map_image_ = LoadGraph("data/map/map1.png");  //とりあえずマップの画像を入る
+	//マップの画像を初期化する
+	Map_image_ = LoadGraph("data/map/map1.png");
 
 	//いろいろな画像を初期化する
 	Ground_image_ = LoadGraph("data/map/Ground.png");
