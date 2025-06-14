@@ -58,7 +58,15 @@ int player_image_w;
 	bool is_jump;
 	int jump_frame;
 
+	bool player_enemy_hit = false;
+	bool diy_jump = false;
+	int diy_jump_count = 0;
+	int image_diy_;
+	bool enemy_hit = false;
 
+	bool second_jump_player_enemy_hit = false;
+	bool second_jump = false;
+	int second_jump_count = 0;
 
 	void Init();     //	‰Šú‰»ˆ—
 	void Update(bool& is_on_ground);	//	XVˆ—

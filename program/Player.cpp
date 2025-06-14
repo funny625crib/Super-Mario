@@ -40,7 +40,7 @@ void Player::Init()
 	//プレイヤーの画像の初期化
 	image_small = LoadGraph("data/player/Mario.png");
 	image_big = LoadGraph("data/player/Mario_big.png");
-
+	image_diy_ = LoadGraph("data/player/mario_diy.png");
 	//プレイヤーの座標を初期化する
 	pos_ = { 0.0f,0.0f };
 
@@ -59,6 +59,13 @@ void Player::Init()
 	player_image_w = PLAYER_IMAGE_W;
 	image_ = image_small;
 	player_size = SIZE_SMALL;
+
+	diy_jump = false;
+	player_enemy_hit = false;
+	second_jump_player_enemy_hit = false;
+	second_jump = false;
+	second_jump_count = 0;
+	diy_jump_count = 0;
 }
 
 //---------------------------------------------------------------------------------
@@ -70,7 +77,48 @@ void Player::Update(bool& is_on_ground)
 	//フレーム
 	static int player_frame;
 
-	
+	if (player_enemy_hit == true) {
+		if (player_size == SIZE_BIG) {
+			player_enemy_hit = false;
+			player_image_h = PLAYER_IMAGE_H;
+			player_image_w = PLAYER_IMAGE_W;
+			player_size = SIZE_SMALL;
+			image_ = image_small;
+		}
+		else if (player_size == SIZE_SMALL) {
+			diy_jump = true;
+		}
+	}
+	if (diy_jump == true)
+	{
+		diy_jump_count++;
+		if (diy_jump_count < 20)
+		{
+			pos_.y -= 15.0f;
+		}
+		else {
+			pos_.y += 5.0f;
+		}
+
+	}
+	if (second_jump_player_enemy_hit == true) {
+		second_jump = true;
+	}
+	if (second_jump == true)
+	{
+		second_jump_count++;
+		if (second_jump_count < 20)
+		{
+			pos_.y -= 15.0f;
+		}
+		else {
+			second_jump_player_enemy_hit = false;
+			second_jump = false;
+			second_jump_count = 0;
+		}
+
+
+	}
 
 	//一時てきにプレイヤーの代わりに操作する
 	if (PushHitKey(KEY_INPUT_SPACE) && is_on_ground == true)
@@ -159,7 +207,14 @@ void Player::Update(bool& is_on_ground)
 //---------------------------------------------------------------------------------
 void Player::Render()
 {
-	DrawRectGraphF(pos_.x, pos_.y, image_x, image_y, player_image_w, player_image_h, image_, TRUE, is_overturn);
+	if (diy_jump == false) {
+
+		DrawRectGraphF(pos_.x, pos_.y, image_x, image_y, player_image_w, player_image_h, image_, TRUE, is_overturn);
+	}
+	else {
+		DrawRotaGraphF(pos_.x, pos_.y, 2.0f, 0.0f, image_diy_, TRUE, is_overturn);
+
+	}
 }
 //---------------------------------------------------------------------------------
 //	終了処理
@@ -169,4 +224,6 @@ void Player::Exit()
 	DeleteGraph(image_);
 	DeleteGraph(image_small);
 	DeleteGraph(image_big);
+	DeleteGraph(image_diy_);
+
 }
