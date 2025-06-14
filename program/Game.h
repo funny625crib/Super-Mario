@@ -21,5 +21,6 @@ enum
 {
 	GAME_START,
 	GAME_OVER,
+	GAME_CLEAR,
 };
 

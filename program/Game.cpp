@@ -7,12 +7,14 @@
 #include "player.h"
 #include "agaric.h"
 #include "Goomba.h"
+#include "Goal.h"
 Map map;
 Goomba  goomba[10];
 Player player;
-
+Goal goal[10];
 Agaric agaric;   //キリコ
 int index_max;
+int goal_num;
 int mario_game_mode;
 
 //ゲーム再開まで待つ時間
@@ -23,14 +25,14 @@ int replay_frame;
 //---------------------------------------------------------------------------------
 void GameInit()
 {
-	
+	goal_num = 0;
 	//ゲームモード最初はスタート
 	mario_game_mode = GAME_START;
 
 	map.Init();
 	player.Init();
 	agaric.Init();
-	
+
 	for (int h = 0; h < MAP_H; ++h) {
 		for (int w = 0; w < MAP_W; ++w) {
 			if (map.map[h][w] == 9) {
@@ -38,8 +40,14 @@ void GameInit()
 				goomba[index_max].first_pos_y = h;
 				index_max++;
 			}
+			if (map.map[h][w] == 8) {
+				goal[goal_num].first_pos_x = w;
+				goal[goal_num].first_pos_y = h;
+				goal_num++;
+			}
 		}
 	}
+
 	for (int i = 0; i < index_max; ++i) {
 		goomba[i].Reset_();
 	}
@@ -47,9 +55,13 @@ void GameInit()
 
 		for (int h = 0; h < MAP_H; ++h) {
 			for (int w = 0; w < MAP_W; ++w) {
+
 				goomba[i].Goomba_Hit_Map_Init(map.map[h][w], w, h);
 			}
 		}
+	}
+	for (int i = 0; i < goal_num; ++i) {
+		goal[i].Init(map.map[goal[i].first_pos_y][goal[i].first_pos_x], goal[i].first_pos_y, goal[i].first_pos_x);
 	}
 	for (int i = 0; i < index_max; ++i) {
 		goomba[i].Init(map.map[goomba[i].first_pos_y][goomba[i].first_pos_x], goomba[i].first_pos_y, goomba[i].first_pos_x);
@@ -71,16 +83,24 @@ void GameUpdate()
 	map.Agaric_hit(agaric.pos_, agaric.speed, agaric.mode_);
 
 	//プレイヤーと壁の当たり判定
-	map.Player_hit(player.pos_, player.is_jump, player.jump_frame, player.player_size,player.player_image_w, mario_game_mode);
+	map.Player_hit(player.pos_, player.is_jump, player.jump_frame, player.player_size, player.player_image_w, mario_game_mode);
 
 	//プレイヤーとキリコの当たり判定
-	player.agaric_eat(agaric.pos_, agaric.mode_,map.pos_, map.is_on_ground);
-	for (int i = 0; i < index_max; ++i) {
-		Float2 map_move = { 0.0f,0.0f };
-		
-		if (CheckHitKey(KEY_INPUT_D) && player.pos_.x >= SCREEN_W / 2) {
-			map_move.x += 3.0f;
+	player.agaric_eat(agaric.pos_, agaric.mode_, map.pos_, map.is_on_ground);
+	Float2 map_move = { 0.0f,0.0f };
+
+	if (CheckHitKey(KEY_INPUT_D) && player.pos_.x >= SCREEN_W / 2) {
+		map_move.x += 3.0f;
+		for (int i = 0; i < goal_num; ++i) {
+			goal[i].map_move = 3.0f;
+
+			goal[i].Update(player.pos_, PLAYER_IMAGE_W / 2);
+
 		}
+	}
+
+	for (int i = 0; i < index_max; ++i) {
+
 		if (CheckCircleBoxHit(goomba[i].Pos_.x, goomba[i].Pos_.y, 35, map_move.x - 35, map.pos_.y - 35, map_move.x + SCREEN_W + 35, SCREEN_H)) {
 			goomba[i].Update(player.pos_, PLAYER_IMAGE_W / 2, CheckHitKey(KEY_INPUT_D) && player.pos_.x >= SCREEN_W / 2, map.is_on_ground, map.pos_, player.enemy_hit, player.player_enemy_hit, player.second_jump_player_enemy_hit);
 		}
@@ -90,12 +110,12 @@ void GameUpdate()
 	//ゲームオーバーになったっら
 	if (mario_game_mode == GAME_OVER)
 	{
-		
+
 		replay_frame++;
 		//2ｓ後ゲーム再開
 		if (replay_frame >= 120)
 		{
-			
+
 			//全て初期化する
 			map.Init();
 			player.Init();
@@ -104,7 +124,7 @@ void GameUpdate()
 
 			GameInit();
 			replay_frame = 0;
-			
+
 			mario_game_mode = GAME_START;
 		}
 	}
@@ -122,6 +142,9 @@ void GameRender()
 		goomba[i].Render();
 
 	}
+	for (int i = 0; i < goal_num; ++i) {
+		goal[i].Render();
+	}
 	//Float2 map_move = { 0.0f,0.0f };
 
 	//if (CheckHitKey(KEY_INPUT_D) && player.pos_.x >= SCREEN_W / 2) {
@@ -135,7 +158,7 @@ void GameRender()
 
 	DrawFormatString(10 + 90, 10, GetColor(255, 255, 255), "%d", map.map[((int)player.pos_.y / GROUND_SIZE)][((int)(player.pos_.x - map.pos_.x) / GROUND_SIZE)]);
 
-	DrawFormatString(10 , 60, GetColor(255, 255, 255), "%f", player.pos_.y);
+	DrawFormatString(10, 60, GetColor(255, 255, 255), "%f", player.pos_.y);
 	DrawFormatString(10, 80, GetColor(255, 255, 255), "game_mode:%d", mario_game_mode);
 	DrawFormatString(40, 100, GetColor(255, 255, 255), "frame:%d", replay_frame);
 
@@ -150,5 +173,8 @@ void GameExit()
 	agaric.Exit();
 	for (int i = 0; i < index_max; ++i) {
 		goomba[i].Exit();
+	}
+	for (int i = 0; i < goal_num; ++i) {
+		goal[i].Exit();
 	}
 }
