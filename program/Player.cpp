@@ -13,6 +13,7 @@ void Player::agaric_eat(Float2& agaric_pos, int& agaric_mode,Float2 map_pos, boo
 	if (CheckBoxHit(pos_.x, pos_.y, PLAYER_IMAGE_W, PLAYER_IMAGE_H, agaric_pos.x+map_pos.x, agaric_pos.y, AGARIC_IMAGE_SIZE, AGARIC_IMAGE_SIZE)
 		&& agaric_mode == Agaric::MODE_MOVE)
 	{
+		//当たったらキリコの画像がなくなる
 		agaric_mode = Agaric::MODE_DISAPPEAR;
 
 		//マリオの画像は大きくなる
@@ -89,6 +90,7 @@ void Player::Update(bool& is_on_ground)
 			diy_jump = true;
 		}
 	}
+
 	if (diy_jump == true)
 	{
 		diy_jump_count++;

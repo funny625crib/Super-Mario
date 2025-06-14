@@ -51,7 +51,7 @@ void Map::Player_hit(Float2& player_pos, bool& jump_mode, int jump_frame, int pl
 	}
 
 	//プレイヤーが地面に触れると、落下しなくなります
-	if (map[((int)player_pos.y / GROUND_SIZE) + num][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] != 0)    //地面
+	if (map[((int)player_pos.y / GROUND_SIZE) + num][((int)(player_pos.x - pos_.x) / GROUND_SIZE)] != 0)             //地面      
 	{
 		is_on_ground = true;
 	}

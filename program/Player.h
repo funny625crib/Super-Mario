@@ -14,22 +14,19 @@ public:
 #define PLAYER_BIG_IMAGE_W 50
 #define PLAYER_BIG_IMAGE_H 68
 
-	
-
-
 //プレイヤーの移動スピード
 #define PLAYER_MOVE_SPEED    2.0f
 
 
 	//プレイヤー画像のサイズ
-int player_image_w;
+	int player_image_w;
 	int player_image_h;
 
 	//マリオの画像
 	int image_small;
 	int image_big;
 
-//描画する画面の座標
+	//描画する画面の座標
 	int image_x;
 	int image_y;
 
@@ -72,6 +69,6 @@ int player_image_w;
 	void Update(bool& is_on_ground);	//	更新処理
 	void Render();	//	描画処理
 	void Exit();		//	終了処理
-	void agaric_eat(Float2& agaric_pos,int& agaric_mode,Float2 map_pos,bool is_on_ground);  //	プレイヤーとキリコの当たり判定
+	void agaric_eat(Float2& agaric_pos, int& agaric_mode, Float2 map_pos, bool is_on_ground);  //	プレイヤーとキリコの当たり判定
 
 };
